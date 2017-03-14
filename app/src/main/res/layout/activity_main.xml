@@ -7,7 +7,7 @@
                                                  android:layout_height="match_parent"
                                                  android:fitsSystemWindows="true"
 
-    tools:context="edu.ucsb.cs.cs185.nivek325.showmethemoney.MainActivity">
+                                                 tools:context="edu.ucsb.cs.cs185.nivek325.showmethemoney.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -23,20 +23,19 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            app:theme="@style/ToolbarColoredBackArrow"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
             android:background="@color/tab_background"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:theme="@style/ToolbarColoredBackArrow"
             >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@string/title"
                 android:textColor="@color/tab_text"
-                android:text="show me the money"
-                android:textSize="20dp"
-        />
+                android:textSize="20sp"/>
 
         </android.support.v7.widget.Toolbar>
 
@@ -45,9 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/tab_background"
-            app:tabTextColor="@color/tab_text"
-            app:tabSelectedTextColor="@color/tab_text"
             app:tabIndicatorColor="@color/money"
+            app:tabSelectedTextColor="@color/tab_text"
+            app:tabTextColor="@color/tab_text"
             />
 
     </android.support.design.widget.AppBarLayout>
@@ -66,6 +65,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email"/>
+        app:srcCompat="@drawable/ic_add_24dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
