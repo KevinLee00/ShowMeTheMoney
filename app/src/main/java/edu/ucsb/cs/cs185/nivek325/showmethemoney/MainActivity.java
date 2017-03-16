@@ -1,8 +1,8 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,7 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment.OnFragmentInteractionListener {
+    private TransactionAdapter adapter;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -29,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
 
     @Override
@@ -50,20 +48,26 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(1);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        // Connect tab layout with ViewPager
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                TransactionManager.Transaction transaction = new TransactionManager.Transaction
+                        ("test", 999999);
+                TransactionManager.addTransaction(transaction);
             }
         });
-
+        adapter = new TransactionAdapter(this);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,7 +140,14 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            if (position == 0) {
+                TransactionHistoryFragment transactionHistoryFragment =
+                        TransactionHistoryFragment.newInstance();
+                transactionHistoryFragment.setTransactionAdapter(adapter);
+                return transactionHistoryFragment;
+            } else {
+                return PlaceholderFragment.newInstance(position + 1);
+            }
         }
 
         @Override
