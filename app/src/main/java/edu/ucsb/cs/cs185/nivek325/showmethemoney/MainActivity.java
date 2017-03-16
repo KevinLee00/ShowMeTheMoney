@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
         }
 
+
         @Override
         public int getCount() {
             // Show 3 total pages.
