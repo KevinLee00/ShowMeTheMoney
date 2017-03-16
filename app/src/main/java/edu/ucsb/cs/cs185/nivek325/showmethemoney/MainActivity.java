@@ -2,7 +2,6 @@ package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment.OnFragmentInteractionListener {
     private TransactionAdapter adapter;
@@ -52,13 +52,11 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionsMenu fab = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TransactionManager.Transaction transaction = new TransactionManager.Transaction
-                        ("test", 999999);
-                TransactionManager.addTransaction(transaction);
+                view.setSelected(true);
             }
         });
         adapter = new TransactionAdapter(this);
