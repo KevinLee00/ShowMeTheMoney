@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -52,6 +54,14 @@ public class TransactionAdapter extends BaseAdapter {
 
         title.setText(transaction.getTitle());
         amount.setText(String.format(Locale.US, "$%.1f", transaction.getAmount()));
+
+        ImageView icon = (ImageView) v.findViewById(R.id.circle);
+        icon.setColorFilter(context.getResources().getColor(R.color.primaryGreen));
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) icon
+                .getLayoutParams();
+        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
+        icon.setLayoutParams(layoutParams);
+
         return v;
     }
 }

@@ -9,12 +9,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment.OnFragmentInteractionListener {
@@ -52,11 +52,44 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionsMenu fab = (FloatingActionsMenu) findViewById(R.id.fabmenu);
+        final FloatingActionsMenu fab = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.setSelected(true);
+            }
+        });
+        final FloatingActionButton tfab = (FloatingActionButton) findViewById(R.id.add_transaction);
+        tfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Add Transaction", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
+        final FloatingActionButton pfab = (FloatingActionButton) findViewById(R.id
+                .schedule_payment);
+        pfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Schedule Payment", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
+        fab.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                tfab.setVisibility(View.VISIBLE);
+                pfab.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                tfab.setVisibility(View.GONE);
+                pfab.setVisibility(View.GONE);
+
             }
         });
         adapter = new TransactionAdapter(this);

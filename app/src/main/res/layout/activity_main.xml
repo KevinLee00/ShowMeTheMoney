@@ -2,11 +2,11 @@
 <android.support.design.widget.CoordinatorLayout android:id="@+id/main_content"
                                                  xmlns:android="http://schemas.android.com/apk/res/android"
                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:fab="http://schemas.android.com/apk/res-auto"
                                                  xmlns:tools="http://schemas.android.com/tools"
                                                  android:layout_width="match_parent"
                                                  android:layout_height="match_parent"
                                                  android:fitsSystemWindows="true"
-
                                                  tools:context="edu.ucsb.cs.cs185.nivek325.showmethemoney.MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -16,10 +16,7 @@
         android:background="@color/primaryGreen"
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:theme="@style/ActionBar"
-
-
-        >
+        app:theme="@style/ActionBar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,8 +24,7 @@
             android:layout_height="@dimen/toolbar_height"
             android:background="@color/primaryGreen"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:theme="@style/ToolbarColoredBackArrow"
-            >
+            app:theme="@style/ToolbarColoredBackArrow">
 
             <TextView
                 android:layout_width="match_parent"
@@ -46,8 +42,7 @@
             android:background="@color/primaryGreen"
             app:tabIndicatorColor="@color/white"
             app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/white"
-            />
+            app:tabTextColor="@color/white"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -63,15 +58,24 @@
         android:id="@+id/fabmenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom">
+        android:layout_gravity="end|bottom"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="left">
+
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/schedule_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/primaryGreen"/>
+            app:fab_colorNormal="@color/primaryGreen"
+            fab:fab_title="Schedule Payment"/>
+
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_transaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/white"/>
+            app:fab_colorNormal="@color/white"
+            fab:fab_title="Add Transaction"/>
+
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </android.support.design.widget.CoordinatorLayout>
