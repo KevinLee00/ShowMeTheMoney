@@ -2,36 +2,32 @@ package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class MainProgressBarFragment extends Fragment {
-
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public MainProgressBarFragment() {
     }
 
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
-//    public static MainProgressBarFragment newInstance(int sectionNumber) {
-//        MainProgressBarFragment fragment = new MainProgressBarFragment();
-//        Bundle args = new Bundle();
-//        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.progress_bar_detail, container, false);
+        View view = inflater.inflate(R.layout.swipe_up, container, false);
+
+        String HTMLOpenTag = "<b><font color='#20CD5F'>";
+        String HTMLEndTag = "</font></b>";
+
+        TextView amtLeft = (TextView) view.findViewById(R.id.amtSpent);
+        TextView perLeft = (TextView) view.findViewById(R.id.perSpent);
+
+        amtLeft.setText(Html.fromHtml("You have" + HTMLOpenTag + " $750 " + HTMLEndTag+ "left to spend."));
+        perLeft.setText(Html.fromHtml("You've used" + HTMLOpenTag + " 73% " + HTMLEndTag+ "of your budget."));
+
+        return view;
     }
 
 }

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="68dp"
+    sothree:umanoShadowHeight="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/amtSpent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/perSpent"/>
+
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+            android:id="@+id/progress_1"
+            android:layout_height="50dp"
+            android:layout_width="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            app:rcBackgroundPadding="5dp"
+            app:rcProgress="70.0"
+            app:rcRadius="25dp"
+            app:rcProgressColor="@color/primaryGreen"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="$1750"
+                android:id="@+id/totalSpentText"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:text=" / $2500"
+                android:id="@+id/maxBudgetText"
+                android:textColor="@color/primaryGreen"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="-50dp">
+
+        <ImageView
+            android:paddingTop="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/arrow_icon"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progress_detail_1"
+                android:layout_height="@dimen/progress_bar_height"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                app:rcBackgroundPadding="5dp"
+                app:rcProgress="70.0"
+                app:rcMax="100.0"
+                app:rcRadius="25dp"
+                app:rcProgressColor="@color/material_red"
+                />
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progress_detail_2"
+                android:layout_height="@dimen/progress_bar_height"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                app:rcBackgroundPadding="5dp"
+                app:rcProgress="70.0"
+                app:rcRadius="25dp"
+                app:rcProgressColor="@color/material_amber"
+                />
+
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progress_detail_3"
+                android:layout_height="@dimen/progress_bar_height"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                app:rcBackgroundPadding="5dp"
+                app:rcProgress="70.0"
+                app:rcRadius="25dp"
+                app:rcProgressColor="@color/material_cyan"
+                />
+
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progress_detail_4"
+                android:layout_height="@dimen/progress_bar_height"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                app:rcBackgroundPadding="5dp"
+                app:rcProgress="70.0"
+                app:rcRadius="25dp"
+                app:rcProgressColor="@color/material_purple"
+                />
+
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/progress_detail_5"
+                android:layout_height="@dimen/progress_bar_height"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                app:rcBackgroundPadding="5dp"
+                app:rcProgress="70.0"
+                app:rcRadius="25dp"
+                app:rcProgressColor="@color/material_light_green"
+                />
+            </LinearLayout>
+
+    </LinearLayout>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

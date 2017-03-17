@@ -33,4 +33,10 @@ dependencies {
     compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
     compile 'com.github.sundeepk:compact-calendar-view:2.0.0'
     testCompile 'junit:junit:4.12'
+    dependencies {
+        repositories {
+            mavenCentral()
+        }
+        compile 'com.sothree.slidinguppanel:library:3.3.1'
+    }
 }
