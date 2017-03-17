@@ -67,7 +67,10 @@ public class FuturePaymentsFragment extends Fragment {
         calendarView.shouldScrollMonth(false);
 
         final TextView monthTitle = (TextView) view.findViewById(month);
-        monthTitle.setText("Mar - 2017");
+
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM yyyy", Locale.getDefault());
+        Date date = calendarView.getFirstDayOfCurrentMonth();
+        monthTitle.setText(dateFormat.format(date));
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
@@ -77,7 +80,6 @@ public class FuturePaymentsFragment extends Fragment {
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MMM - yyyy", Locale.getDefault());
                 monthTitle.setText(dateFormat.format(firstDayOfNewMonth));
             }
         });

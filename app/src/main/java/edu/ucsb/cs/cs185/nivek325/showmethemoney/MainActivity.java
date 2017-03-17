@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(1);
+        mViewPager.setOffscreenPageLimit(2);
 
         // Connect tab layout with ViewPager
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Add Transaction", Toast.LENGTH_SHORT)
                         .show();
+                TransactionManager.addTransaction(new TransactionManager.Transaction("test", 999,
+                 "Living Expenses"));
             }
         });
 
