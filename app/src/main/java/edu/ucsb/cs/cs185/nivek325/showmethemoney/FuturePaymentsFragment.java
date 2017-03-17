@@ -59,8 +59,8 @@ public class FuturePaymentsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_future_payments, container, false);
-        //ListView listView = (ListView) view.findViewById(R.id.future_list);
-        //listView.setAdapter(transactionAdapter);
+        ListView listView = (ListView) view.findViewById(R.id.future_list);
+        listView.setAdapter(transactionAdapter);
 
         final CustomCalendarView calendarView = (CustomCalendarView) view.findViewById(R.id.calendar);
         calendarView.shouldScrollMonth(false);
