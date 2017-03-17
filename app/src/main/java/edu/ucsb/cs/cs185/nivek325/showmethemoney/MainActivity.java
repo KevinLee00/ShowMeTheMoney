@@ -15,9 +15,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
-public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment
+        .OnFragmentInteractionListener, FuturePaymentsFragment.OnFragmentInteractionListener {
     private TransactionAdapter adapter;
 
     /**
@@ -52,13 +52,6 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
 
-        final FloatingActionsMenu fab = (FloatingActionsMenu) findViewById(R.id.fabmenu);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.setSelected(true);
-            }
-        });
         final FloatingActionButton tfab = (FloatingActionButton) findViewById(R.id.add_transaction);
         tfab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,21 +70,6 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
                         .show();
             }
         });
-
-        fab.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
-            @Override
-            public void onMenuExpanded() {
-                tfab.setVisibility(View.VISIBLE);
-                pfab.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onMenuCollapsed() {
-                tfab.setVisibility(View.GONE);
-                pfab.setVisibility(View.GONE);
-
-            }
-        });
         adapter = new TransactionAdapter(this);
     }
 
@@ -99,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,40 +103,6 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
     }
 
     /**
-     * A placeholder fragment containing a simple view.
-     */
-//    public static class ProgressBarFragment extends Fragment {
-//        /**
-//         * The fragment argument representing the section number for this
-//         * fragment.
-//         */
-//        private static final String ARG_SECTION_NUMBER = "section_number";
-//
-//        public ProgressBarFragment() {
-//        }
-//
-//        /**
-//         * Returns a new instance of this fragment for the given section
-//         * number.
-//         */
-//        public static ProgressBarFragment newInstance(int sectionNumber) {
-//            ProgressBarFragment fragment = new ProgressBarFragment();
-//            Bundle args = new Bundle();
-//            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-//            fragment.setArguments(args);
-//            return fragment;
-//        }
-//
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                                 Bundle savedInstanceState) {
-//
-//            return inflater.inflate(R.layout.progress_bar_detail, container, false);
-//
-//        }
-//    }
-
-    /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
@@ -175,9 +121,10 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
                         TransactionHistoryFragment.newInstance();
                 transactionHistoryFragment.setTransactionAdapter(adapter);
                 return transactionHistoryFragment;
+            } else if (position == 1) {
+                return new MainProgressBarFragment();
             } else {
-                MainProgressBarFragment mProgressBarFragment = new MainProgressBarFragment();
-                return mProgressBarFragment;
+                return new FuturePaymentsFragment();
             }
 
         }
