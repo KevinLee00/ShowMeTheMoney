@@ -6,7 +6,9 @@
 
     <color name="primaryGreen">#60AC7B</color>
     <color name="primaryDarkerGreen">#00bfa5</color>
+    <color name="primaryOrange">#FFA059</color>
     <color name="primaryGrey">#e0e0e0</color>
+    <color name="primaryPink">#F9669A</color>
     <color name="white">#FFFFFF</color>
     <color name="main_background">#e0e0e0</color>
 

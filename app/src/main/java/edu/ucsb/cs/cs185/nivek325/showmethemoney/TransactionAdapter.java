@@ -56,7 +56,15 @@ public class TransactionAdapter extends BaseAdapter {
         amount.setText(String.format(Locale.US, "$%.1f", transaction.getAmount()));
 
         ImageView icon = (ImageView) v.findViewById(R.id.circle);
-        icon.setColorFilter(context.getResources().getColor(R.color.primaryGreen));
+        if (transaction.getColor() == 0)
+            icon.setColorFilter(context.getResources().getColor(R.color.primaryOrange));
+        else if (transaction.getColor() == 1)
+            icon.setColorFilter(context.getResources().getColor(R.color.primaryPink));
+        else
+            icon.setColorFilter(context.getResources().getColor(R.color.material_light_blue));
+
+
+
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) icon
                 .getLayoutParams();
         layoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
