@@ -8,6 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="tab_font" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/sans_serif</item>
+    </style>
+    <style name="sans_serif" parent="TextAppearance.Design.Tab">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="tabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>

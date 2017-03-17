@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/title"
+                android:textStyle="normal"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
 
@@ -40,9 +41,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primaryGreen"
+            style="@style/tab_font"
+            app:tabTextAppearance="@style/tabTextStyle"
             app:tabIndicatorColor="@color/white"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/white"/>
+            app:tabSelectedTextColor="@color/white" />
 
     </android.support.design.widget.AppBarLayout>
 

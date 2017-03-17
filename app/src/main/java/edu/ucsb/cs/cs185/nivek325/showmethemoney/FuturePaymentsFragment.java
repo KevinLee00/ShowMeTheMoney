@@ -52,6 +52,7 @@ public class FuturePaymentsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+
         }
     }
     @Override
@@ -66,6 +67,7 @@ public class FuturePaymentsFragment extends Fragment {
         calendarView.shouldScrollMonth(false);
 
         final TextView monthTitle = (TextView) view.findViewById(month);
+        monthTitle.setText("Mar - 2017");
 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
