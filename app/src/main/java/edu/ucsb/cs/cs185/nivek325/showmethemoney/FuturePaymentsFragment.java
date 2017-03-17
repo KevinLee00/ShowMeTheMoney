@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -27,18 +28,40 @@ import static edu.ucsb.cs.cs185.nivek325.showmethemoney.R.id.month;
  */
 public class FuturePaymentsFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener dListener;
+    private TransactionAdapter transactionAdapter;
+
 
     public FuturePaymentsFragment() {
         // Required empty public constructor
     }
 
+    public void setTransactionAdapter(TransactionAdapter transactionAdapter) {
+        this.transactionAdapter = transactionAdapter;
+    }
 
+    public static FuturePaymentsFragment newInstance() {
+        FuturePaymentsFragment fragment = new FuturePaymentsFragment();
+        Bundle args = new Bundle();
+
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_future_payments, container, false);
+        //ListView listView = (ListView) view.findViewById(R.id.future_list);
+        //listView.setAdapter(transactionAdapter);
+
         final CustomCalendarView calendarView = (CustomCalendarView) view.findViewById(R.id.calendar);
         calendarView.shouldScrollMonth(false);
 
@@ -72,12 +95,13 @@ public class FuturePaymentsFragment extends Fragment {
                 calendarView.showNextMonth();
             }
         });
+
         return view;
     }
 
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        if (dListener != null) {
+            dListener.onFragmentInteraction(uri);
         }
     }
 
@@ -85,7 +109,7 @@ public class FuturePaymentsFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+            dListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -95,7 +119,7 @@ public class FuturePaymentsFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        dListener = null;
     }
 
     /**

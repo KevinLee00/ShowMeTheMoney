@@ -15,8 +15,6 @@ import android.widget.ListView;
  * Activities that contain this fragment must implement the
  * {@link TransactionHistoryFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TransactionHistoryFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class TransactionHistoryFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

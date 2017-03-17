@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         .OnFragmentInteractionListener, FuturePaymentsFragment.OnFragmentInteractionListener {
     private TransactionAdapter adapter;
 
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -124,7 +125,10 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
             } else if (position == 1) {
                 return new MainProgressBarFragment();
             } else {
-                return new FuturePaymentsFragment();
+                FuturePaymentsFragment future =
+                        FuturePaymentsFragment.newInstance();
+                future.setTransactionAdapter(adapter);
+                return future;
             }
 
         }

@@ -7,14 +7,12 @@
     android:orientation="vertical"
     tools:context="edu.ucsb.cs.cs185.nivek325.showmethemoney.FuturePaymentsFragment">
 
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
 
             <LinearLayout
                 android:id="@+id/month_layout"
@@ -30,11 +28,11 @@
                     android:id="@+id/prev_month"
                     android:layout_width="wrap_content"
                     android:layout_height="30sp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/ic_chevron_left_black_24dp"
-                    android:gravity="center"/>
+                    android:gravity="center" />
 
                 <TextView
                     android:id="@+id/month"
@@ -50,11 +48,11 @@
                     android:id="@+id/next_month"
                     android:layout_width="wrap_content"
                     android:layout_height="30sp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/ic_chevron_right_black_24dp"
-                    android:gravity="center"/>
+                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -67,29 +65,26 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                app:compactCalendarTextSize="14sp"
                 app:compactCalendarBackgroundColor="#ffe95451"
                 app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
                 app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
-                app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"/>
+                app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
+                app:compactCalendarTextSize="14sp" />
 
         </RelativeLayout>
-    </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1" >
 
         <ListView
-            android:id="@+id/list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/future_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp">
+            android:paddingTop="8dp" />
 
-        </ListView>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>
