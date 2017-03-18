@@ -8,9 +8,75 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="tab_font" parent="Widget.Design.TabLayout">
-        <item name="tabTextAppearance">@style/sans_serif</item>
+
+    <style name="light">
+        <item name="android:background">@color/main_background</item>
+        <item name="android:textColor">@color/black_text</item>
     </style>
+
+    <style name="dark">
+        <item name="android:background">@color/dark_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="dark_tab" parent="Widget.Design.TabLayout">
+        <item name="android:background">@color/dark_toolbars</item>
+        <item name="tabTextAppearance">@style/sans_serif</item>
+        <item name="tabIndicatorColor">@color/primaryGreen</item>
+        <item name="tabSelectedTextColor">@color/primaryDarkerGreen</item>
+    </style>
+
+    <style name="light_tab" parent="Widget.Design.TabLayout">
+        <item name="android:background">@color/primaryGreen</item>
+        <item name="tabTextAppearance">@style/sans_serif</item>
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+
+    <style name="dark_toolbar">
+        <item name="android:background">@color/dark_toolbars</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="light_toolbar">
+        <item name="android:background">@color/primaryGreen</item>
+        <item name="android:textColor">@color/black_text</item>
+    </style>
+
+    <style name="dark_calendar">
+        <item name="compactCalendarBackgroundColor">@color/dark_calendar_background</item>
+        <item name="compactCalendarCurrentDayBackgroundColor">#B71C1C</item>
+        <item name="compactCalendarCurrentSelectedDayBackgroundColor">#E57373</item>
+        <item name="compactCalendarTextSize">14sp</item>
+        <item name="compactCalendarTextColor">@color/white</item>
+        <item name="android:background">@color/dark_calendar_background</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="light_calendar">
+        <item name="compactCalendarBackgroundColor">@color/main_background</item>
+        <item name="compactCalendarCurrentDayBackgroundColor">#B71C1C</item>
+        <item name="compactCalendarCurrentSelectedDayBackgroundColor">#E57373</item>
+        <item name="compactCalendarTextSize">14sp</item>
+        <item name="compactCalendarTextColor">@color/black_text</item>
+        <item name="android:background">@color/main_background</item>
+        <item name="android:textColor">@color/black_text</item>
+
+    </style>
+
+    <style name="default_progress">
+        <item name="rcProgress">70.0</item>
+        <item name="rcMax">100.0</item>
+        <item name="rcRadius">15dp</item>
+        <item name="rcBackgroundPadding">4dp</item>
+        <item name="rcBackgroundColor">@color/progress_background</item>
+        <item name="android:layout_marginTop">20dp</item>
+
+    </style>
+
+
     <style name="sans_serif" parent="TextAppearance.Design.Tab">
         <item name="android:fontFamily">sans-serif</item>
     </style>
@@ -30,7 +96,6 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -38,12 +103,10 @@
 
     <style name="ToolbarColoredBackArrow" parent="AppTheme">
         <item name="android:textColorSecondary">@color/white</item>
-
     </style>
 
     <style name="ActionBar" parent="AppTheme">
         <item name="android:displayOptions">showHome</item>
-
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

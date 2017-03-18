@@ -22,7 +22,9 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        style="@style/dark"
+        />
 
     <LinearLayout
         android:id="@+id/main_content"
@@ -42,7 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceListItem"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            style="@style/dark"
+            />
 
         <TextView
             android:id="@+id/date"
@@ -50,7 +54,9 @@
             android:layout_height="wrap_content"
             android:text="date"
             android:textAppearance="?android:attr/textAppearanceListItem"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:textColor="@color/date_color"
+                />
 
     </LinearLayout>
 

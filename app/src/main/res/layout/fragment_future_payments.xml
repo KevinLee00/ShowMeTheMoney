@@ -22,7 +22,8 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:background="@color/main_background">
+                style="@style/dark_calendar"
+                >
 
                 <Button
                     android:id="@+id/prev_month"
@@ -41,7 +42,10 @@
                     android:layout_marginTop="9dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    style="@style/dark_calendar"
+
+                    />
 
                 <Button
                     android:id="@+id/next_month"
@@ -64,11 +68,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                app:compactCalendarBackgroundColor="@color/main_background"
-                app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
-                app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
                 app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
-                app:compactCalendarTextSize="14sp" />
+                style="@style/dark_calendar"/>
 
         </RelativeLayout>
 

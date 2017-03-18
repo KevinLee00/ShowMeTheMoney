@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
                 Toast.makeText(getApplicationContext(), "Add Transaction", Toast.LENGTH_SHORT)
                         .show();
                 TransactionManager.addTransaction(new TransactionManager.Transaction("test", 999,
-                 "Living Expenses", 2));
+                 "Living Expenses"));
             }
         });
 

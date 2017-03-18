@@ -23,13 +23,13 @@ public class TransactionManager {
         for (int i = 1; i <= 5; i++) {
             switch (i) {
                 case 1: case 2:
-                    ITEMS.add(new Transaction("Food", 500 * i, "Food", 0));
+                    ITEMS.add(new Transaction("Food", 500 * i, "Food"));
                     break;
                 case 3: case 4:
-                    ITEMS.add(new Transaction("Entertainment", 500 * i, "Entertainment", 1));
+                    ITEMS.add(new Transaction("Entertainment", 500 * i, "Entertainment"));
                     break;
                 default:
-                    ITEMS.add(new Transaction("Living Expenses", 500 * i, "Living Expenses", 2));
+                    ITEMS.add(new Transaction("Living Expenses", 500 * i, "Living Expenses"));
             }
 
         }
@@ -40,6 +40,7 @@ public class TransactionManager {
         colors.add(0);
         colors.add(1);
         colors.add(2);
+        colors.add(3);
     }
 
     public static class Transaction {
@@ -48,12 +49,20 @@ public class TransactionManager {
         private final String category;
         private final int color;
 
-        public Transaction(String title, double amount, String category, int color) {
+        public Transaction(String title, double amount, String category) {
             this.title = title;
             this.amount = amount;
             this.category = category;
-            this.color = color;
+            if (category.equals("Food"))
+                this.color = 0;
+            else if (category.equals("Entertainment"))
+                this.color = 1;
+            else if (category.equals("Living Expenses"))
+                this.color = 2;
+            else
+                this.color = 3;
         }
+
 
         public String getTitle() {
             return title;

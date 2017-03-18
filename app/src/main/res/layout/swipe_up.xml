@@ -21,25 +21,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="22sp"
+            android:textColor="@color/white"
             android:id="@+id/amtSpent"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:paddingBottom="25dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
             android:id="@+id/perSpent"/>
+
 
         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
             android:id="@+id/progress_1"
             android:layout_height="50dp"
             android:layout_width="300dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
-            app:rcBackgroundPadding="5dp"
-            app:rcProgress="70.0"
-            app:rcRadius="25dp"
-            app:rcProgressColor="@color/primaryGreen"
-            />
+            app:rcProgressColor="@color/primaryDarkerGreen"
+            style="@style/default_progress"/>
 
 
         <LinearLayout
@@ -53,6 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:text="$1750"
                 android:id="@+id/totalSpentText"
@@ -65,7 +66,7 @@
                 android:textStyle="bold"
                 android:text=" / $2500"
                 android:id="@+id/maxBudgetText"
-                android:textColor="@color/primaryGreen"
+                android:textColor="@color/primaryDarkerGreen"
                 />
 
         </LinearLayout>
@@ -80,6 +81,7 @@
         android:layout_marginTop="-50dp">
 
         <ImageView
+            android:id="@+id/swipe_arrow"
             android:paddingTop="10dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -98,12 +100,8 @@
                 android:layout_height="@dimen/progress_bar_height"
                 android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                app:rcBackgroundPadding="5dp"
-                app:rcProgress="70.0"
-                app:rcMax="100.0"
-                app:rcRadius="25dp"
-                app:rcProgressColor="@color/material_red"
+                style="@style/default_progress"
+                app:rcProgressColor="@color/primaryPink"
                 />
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
@@ -111,11 +109,8 @@
                 android:layout_height="@dimen/progress_bar_height"
                 android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                app:rcBackgroundPadding="5dp"
-                app:rcProgress="70.0"
-                app:rcRadius="25dp"
-                app:rcProgressColor="@color/material_amber"
+                style="@style/default_progress"
+                app:rcProgressColor="@color/primaryAmber"
                 />
 
 
@@ -124,11 +119,8 @@
                 android:layout_height="@dimen/progress_bar_height"
                 android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                app:rcBackgroundPadding="5dp"
-                app:rcProgress="70.0"
-                app:rcRadius="25dp"
-                app:rcProgressColor="@color/material_cyan"
+                style="@style/default_progress"
+                app:rcProgressColor="@color/primaryBlue"
                 />
 
 
@@ -137,11 +129,8 @@
                 android:layout_height="@dimen/progress_bar_height"
                 android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                app:rcBackgroundPadding="5dp"
-                app:rcProgress="70.0"
-                app:rcRadius="25dp"
-                app:rcProgressColor="@color/material_purple"
+                style="@style/default_progress"
+                app:rcProgressColor="@color/primaryPurple"
                 />
 
 
@@ -150,11 +139,8 @@
                 android:layout_height="@dimen/progress_bar_height"
                 android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                app:rcBackgroundPadding="5dp"
-                app:rcProgress="70.0"
-                app:rcRadius="25dp"
-                app:rcProgressColor="@color/material_light_green"
+                style="@style/default_progress"
+                app:rcProgressColor="@color/primaryGreen"
                 />
             </LinearLayout>
 

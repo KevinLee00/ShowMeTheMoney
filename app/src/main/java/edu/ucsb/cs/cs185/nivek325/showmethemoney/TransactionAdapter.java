@@ -60,8 +60,11 @@ public class TransactionAdapter extends BaseAdapter {
             icon.setColorFilter(context.getResources().getColor(R.color.primaryOrange));
         else if (transaction.getColor() == 1)
             icon.setColorFilter(context.getResources().getColor(R.color.primaryPink));
-        else
+        else if (transaction.getColor() == 2)
             icon.setColorFilter(context.getResources().getColor(R.color.material_light_blue));
+        else
+            icon.setColorFilter(context.getResources().getColor(R.color.primaryPurple));
+
 
 
 
