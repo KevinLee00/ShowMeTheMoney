@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#12151c</color>
     <color name="colorAccent">#FF4081</color>
 
+
+    <color name="white">#FFFFFF</color>
     <color name="main_background">#e0e0e0</color>
     <color name="black_text">#161a24</color>
 
@@ -12,7 +14,6 @@
     <color name="dark_toolbars">#161a24</color>
     <color name="dark_background">#242832</color>
     <color name="dark_calendar_background">#2b303c</color>
-    <color name="white">#dcdbdb</color>
     <color name="date_color">#777777</color>
 
 
@@ -29,15 +30,15 @@
 
     <color name="material_pink">#f50057</color>
     <color name="material_red">#d50000</color>
-    <color name="material_orange">#ff6d00</color>
+    <color name="material_orange">#ff9800</color>
     <color name="material_amber">#ffc107</color>
     <color name="material_yellow">#ffeb3b</color>
     <color name="material_light_green">#64dd17</color>
     <color name="material_green">#00c853</color>
     <color name="material_cyan">#18ffff</color>
     <color name="material_light_blue">#29b6f6</color>
-    <color name="material_blue">#0d47a1</color>
-    <color name="material_purple">#6200ea</color>
+    <color name="material_blue">#1e88e5</color>
+    <color name="material_purple">#b388ff</color>
     <color name="material_gray">#424242</color>
 
 

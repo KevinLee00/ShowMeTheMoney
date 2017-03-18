@@ -13,10 +13,10 @@ public class DetailedBarsFragment extends Fragment {
 
     }
 
-    public static DetailedBarsFragment newInstance() {
-        DetailedBarsFragment fragment = new DetailedBarsFragment();
-        return fragment;
-    }
+//    public static DetailedBarsFragment newInstance() {
+//        DetailedBarsFragment fragment = new DetailedBarsFragment();
+//        return fragment;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

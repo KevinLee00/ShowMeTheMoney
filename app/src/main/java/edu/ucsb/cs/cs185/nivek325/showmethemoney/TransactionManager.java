@@ -45,11 +45,11 @@ public class TransactionManager {
 
     public static class Transaction {
         private final String title;
-        private final double amount;
+        private final float amount;
         private final String category;
         private final int color;
 
-        public Transaction(String title, double amount, String category) {
+        public Transaction(String title, float amount, String category) {
             this.title = title;
             this.amount = amount;
             this.category = category;
@@ -68,7 +68,7 @@ public class TransactionManager {
             return title;
         }
 
-        public double getAmount() {
+        public float getAmount() {
             return amount;
         }
 

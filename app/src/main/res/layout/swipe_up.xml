@@ -7,83 +7,181 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    sothree:umanoPanelHeight="68dp"
-    sothree:umanoShadowHeight="0dp">
+    sothree:umanoPanelHeight="70dp"
+    sothree:umanoShadowHeight="0dp"
+    android:orientation="vertical">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="10dp"
         >
 
-        <TextView
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            android:id="@+id/amtSpent"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="25dp"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:id="@+id/perSpent"/>
-
-
-        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-            android:id="@+id/progress_1"
-            android:layout_gravity="center_horizontal"
-            app:rcProgressColor="@color/primaryDarkerGreen"
-            app:rcProgress="73"
-            style="@style/default_progress"/>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="16dp"
+            sothree:cardCornerRadius="1dp"
+            sothree:cardElevation="1dp"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:text="$1750"
-                android:id="@+id/totalSpentText"
-                />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="Summary"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:id="@+id/amtSpent"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:id="@+id/perSpent"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="8dp"
+            sothree:cardCornerRadius="1dp"
+            sothree:cardElevation="1dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Spending"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="left"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textAlignment="viewEnd"
+                        android:id="@+id/totalSpentText"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textAlignment="viewEnd"
+                        android:id="@+id/maxBudgetText"
+                        android:textColor="@color/primaryGreen"
+                        />
+
+                </LinearLayout>
+
+                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                    android:id="@+id/main_progress_bar"
+                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:layout_gravity="center_horizontal"
+                    app:rcBackgroundPadding="5dp"
+                    app:rcProgress="70.0"
+                    app:rcRadius="25dp"
+                    app:rcProgressColor="@color/primaryGreen"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            sothree:cardCornerRadius="1dp"
+            sothree:cardElevation="1dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:text=" / $2500"
-                android:id="@+id/maxBudgetText"
-                android:textColor="@color/primaryDarkerGreen"
-                />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upcoming Payments"
+                    android:textStyle="bold"
+                    android:layout_gravity="left"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:text="$800 on Friday, Jan. 1 for Rent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="16sp"
+                    android:text="$1,300 on Sunday, Mar. 6 for Alaska Trip"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
+
+    <!--*********************************************-->
+    <!--This is the beginning of the swiped up layout-->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_marginTop="-50dp">
+        android:padding="10dp"
+        android:layout_marginTop="-75dp">
 
         <ImageView
-            android:id="@+id/swipe_arrow"
-            android:paddingTop="10dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:paddingTop="5dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/arrow_icon"
             />
@@ -92,56 +190,284 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal">
 
-            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-                android:id="@+id/progress_detail_1"
-                android:layout_gravity="center_horizontal"
-                app:rcProgressColor="@color/primaryBlue"
-                app:rcProgress="10"
-                style="@style/detailed_progress"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                sothree:cardCornerRadius="1dp"
+                sothree:cardElevation="1dp"
+                android:padding="16dp"
+                >
 
-                />
-
-            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-                android:id="@+id/progress_detail_2"
-                android:layout_gravity="center_horizontal"
-                app:rcProgressColor="@color/primaryGreen"
-                app:rcProgress="25"
-                style="@style/detailed_progress"
-
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
 
-            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-                android:id="@+id/progress_detail_3"
-                android:layout_gravity="center_horizontal"
-                app:rcProgressColor="@color/primaryRed"
-                app:rcProgress="50"
-                style="@style/detailed_progress"
 
-                />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total"
+                            android:textSize="20sp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_alignParentRight="true"
+                            android:text=" / $75"
+                            android:textStyle="bold"
+                            android:id="@+id/category_total_0"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:id="@+id/category_spent_0"
+                            android:layout_toLeftOf="@id/category_total_0"
+                            android:text="$52.16"/>
+
+                    </RelativeLayout>
+
+                    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                        android:id="@+id/progress_detail_1"
+                        android:layout_height="@dimen/progress_bar_height"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        app:rcBackgroundPadding="5dp"
+                        app:rcProgress="70.0"
+                        app:rcMax="100.0"
+                        app:rcRadius="25dp"
+                        app:rcProgressColor="@color/primaryGreen"
+                        />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
 
-            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-                android:id="@+id/progress_detail_4"
-                android:layout_gravity="center_horizontal"
-                app:rcProgressColor="@color/primaryOrange"
-                app:rcProgress="75"
-                style="@style/detailed_progress"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                sothree:cardCornerRadius="1dp"
+                sothree:cardElevation="1dp"
+                android:padding="16dp"
+                android:layout_marginTop="12dp">
 
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Budget Breakdown"
+                        android:textSize="20sp"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentLeft="true"
+                            android:text="Food"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentRight="true"
+                            android:text=" / $75"
+                            android:textStyle="bold"
+                            android:id="@+id/category_total_1"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:id="@+id/category_spent_1"
+                            android:layout_toLeftOf="@id/category_total_1"
+                            android:text="$52.16"/>
+
+                    </RelativeLayout>
+
+                    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                        android:id="@+id/progress_detail_2"
+                        android:layout_height="@dimen/progress_bar_height"
+                        android:layout_width="300dp"
+                        android:layout_gravity="center_horizontal"
+                        app:rcBackgroundPadding="5dp"
+                        app:rcProgress="70.0"
+                        app:rcRadius="25dp"
+                        app:rcProgressColor="@color/material_pink"
+                        />
 
 
-            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-                android:id="@+id/progress_detail_5"
-                android:layout_gravity="center_horizontal"
-                app:rcProgressColor="@color/primaryPurple"
-                app:rcProgress="90"
-                style="@style/detailed_progress"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        >
 
-                />
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentLeft="true"
+                            android:text="Entertainment"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentRight="true"
+                            android:text=" / $75"
+                            android:textStyle="bold"
+                            android:id="@+id/category_total_2"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:id="@+id/category_spent_2"
+                            android:layout_toLeftOf="@id/category_total_2"
+                            android:text="$52.16"/>
+
+                    </RelativeLayout>
+
+                    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                        android:id="@+id/progress_detail_3"
+                        android:layout_height="@dimen/progress_bar_height"
+                        android:layout_width="300dp"
+                        android:layout_gravity="center_horizontal"
+                        app:rcBackgroundPadding="5dp"
+                        app:rcProgress="70.0"
+                        app:rcRadius="25dp"
+                        app:rcProgressColor="@color/material_orange"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentLeft="true"
+                            android:text="Living Expenses"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentRight="true"
+                            android:text=" / $75"
+                            android:textStyle="bold"
+                            android:id="@+id/category_total_3"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:id="@+id/category_spent_3"
+                            android:layout_toLeftOf="@id/category_total_3"
+                            android:text="$52.16"/>
+
+                    </RelativeLayout>
+
+                    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                        android:id="@+id/progress_detail_4"
+                        android:layout_height="@dimen/progress_bar_height"
+                        android:layout_width="300dp"
+                        android:layout_gravity="center_horizontal"
+                        app:rcBackgroundPadding="5dp"
+                        app:rcProgress="70.0"
+                        app:rcRadius="25dp"
+                        app:rcProgressColor="@color/material_light_blue"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentLeft="true"
+                            android:text="Other Costs"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:layout_alignParentRight="true"
+                            android:text=" / $75"
+                            android:textStyle="bold"
+                            android:id="@+id/category_total_4"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"
+                            android:id="@+id/category_spent_4"
+                            android:layout_toLeftOf="@id/category_total_4"
+                            android:text="$52.16"/>
+
+                    </RelativeLayout>
+
+
+                    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                        android:id="@+id/progress_detail_5"
+                        android:layout_height="@dimen/progress_bar_height"
+                        android:layout_width="300dp"
+                        android:layout_gravity="center_horizontal"
+                        app:rcBackgroundPadding="5dp"
+                        app:rcProgress="70.0"
+                        app:rcRadius="25dp"
+                        app:rcProgressColor="@color/material_purple"
+                        />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
     </LinearLayout>
 

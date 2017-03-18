@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
     private FuturePaymentsFragment future;
 
+    private MainProgressBarFragment progressBarFragment;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -146,7 +147,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
                 transactionHistoryFragment.setTransactionAdapter(adapter);
                 return transactionHistoryFragment;
             } else if (position == 1) {
-                return new MainProgressBarFragment();
+                progressBarFragment = new MainProgressBarFragment();
+                return progressBarFragment;
             } else {
                 return future;
             }
