@@ -62,7 +62,7 @@
             android:layout_height="fill_parent"
             android:layout_below="@id/month_layout"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"/>
