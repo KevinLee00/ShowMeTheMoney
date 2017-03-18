@@ -12,8 +12,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -30,7 +32,7 @@ public class FuturePaymentsFragment extends Fragment {
 
     private OnFragmentInteractionListener dListener;
     private TransactionAdapter transactionAdapter;
-
+    private CustomCalendarView customCalendarView;
 
     public FuturePaymentsFragment() {
         // Required empty public constructor
@@ -63,16 +65,17 @@ public class FuturePaymentsFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.future_list);
         listView.setAdapter(transactionAdapter);
 
-        final CustomCalendarView calendarView = (CustomCalendarView) view.findViewById(R.id.calendar);
-        calendarView.shouldScrollMonth(false);
+        customCalendarView = (CustomCalendarView) view.findViewById(R.id.calendar);
+        customCalendarView.shouldScrollMonth(false);
+        customCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
 
         final TextView monthTitle = (TextView) view.findViewById(month);
 
         final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM yyyy", Locale.getDefault());
-        Date date = calendarView.getFirstDayOfCurrentMonth();
+        Date date = customCalendarView.getFirstDayOfCurrentMonth();
         monthTitle.setText(dateFormat.format(date));
 
-        calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+        customCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
 
@@ -88,7 +91,7 @@ public class FuturePaymentsFragment extends Fragment {
         prevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calendarView.showPreviousMonth();
+                customCalendarView.showPreviousMonth();
             }
         });
 
@@ -96,7 +99,7 @@ public class FuturePaymentsFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calendarView.showNextMonth();
+                customCalendarView.showNextMonth();
             }
         });
 
@@ -124,6 +127,10 @@ public class FuturePaymentsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         dListener = null;
+    }
+
+    public void addCalendarEvent(Event event) {
+        customCalendarView.addEvent(event, true);
     }
 
     /**

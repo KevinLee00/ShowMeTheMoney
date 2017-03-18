@@ -11,13 +11,12 @@
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
+        style="@style/dark_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:theme="@style/ActionBar"
-        style="@style/dark_toolbar"
-        >
+        app:theme="@style/ActionBar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,37 +26,34 @@
             app:theme="@style/ToolbarColoredBackArrow">
 
             <TextView
+                style="@style/dark_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/title"
-                android:textStyle="normal"
-                android:typeface="sans"
+                android:text="@string/app_name_spaces"
                 android:textSize="20sp"
-                style="@style/dark_toolbar"
-                />
+                android:textStyle="normal"
+                android:typeface="sans"/>
 
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
+            style="@style/dark_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabTextAppearance="@style/tabTextStyle"
-            style="@style/dark_tab"
-            />
+            app:tabTextAppearance="@style/tabTextStyle"/>
 
-        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
+        style="@style/dark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        style="@style/dark"
-        />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fabmenu"
+        android:id="@+id/fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"

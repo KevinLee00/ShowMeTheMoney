@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -12,13 +13,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
 public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment
         .OnFragmentInteractionListener, FuturePaymentsFragment.OnFragmentInteractionListener {
     private TransactionAdapter adapter;
+
+    private FuturePaymentsFragment future;
 
 
     /**
@@ -38,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -51,18 +54,26 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         mViewPager.setCurrentItem(1);
         mViewPager.setOffscreenPageLimit(2);
 
+        adapter = new TransactionAdapter(this);
+
+        future = new FuturePaymentsFragment();
+        future.setTransactionAdapter(adapter);
+
         // Connect tab layout with ViewPager
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
 
+        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fab_menu);
+
         final FloatingActionButton tfab = (FloatingActionButton) findViewById(R.id.add_transaction);
+
         tfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Add Transaction", Toast.LENGTH_SHORT)
-                        .show();
-                TransactionManager.addTransaction(new TransactionManager.Transaction("test", 999,
-                 "Living Expenses"));
+                NewTransactionDialog dialog = new NewTransactionDialog();
+                dialog.show(getSupportFragmentManager(), "newTransaction");
+
+                fabMenu.collapse();
             }
         });
 
@@ -71,11 +82,15 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         pfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Schedule Payment", Toast.LENGTH_SHORT)
-                        .show();
+                Event event = new Event(R.color.material_blue, 1489456484153L);
+                future.addCalendarEvent(event);
+                Event event1 = new Event(Color.RED, 1489456484153L);
+                future.addCalendarEvent(event1);
+
+                fabMenu.collapse();
+
             }
         });
-        adapter = new TransactionAdapter(this);
     }
 
     @Override
@@ -129,9 +144,6 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
             } else if (position == 1) {
                 return new MainProgressBarFragment();
             } else {
-                FuturePaymentsFragment future =
-                        FuturePaymentsFragment.newInstance();
-                future.setTransactionAdapter(adapter);
                 return future;
             }
 
