@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#12151c</color>
     <color name="colorAccent">#FF4081</color>
 
-
     <color name="white">#FFFFFF</color>
     <color name="main_background">#e0e0e0</color>
     <color name="black_text">#161a24</color>
@@ -16,8 +15,6 @@
     <color name="dark_calendar_background">#2b303c</color>
     <color name="date_color">#777777</color>
 
-
-
     <color name="primaryGreen">#a2faa3</color>
     <color name="primaryDarkerGreen">#00ae60</color>
     <color name="primaryOrange">#F1A94E </color>
@@ -26,7 +23,6 @@
     <color name="primaryBlue">#44B3C2</color>
     <color name="primaryPurple">#7c67ac</color>
     <color name="primaryAmber">#ff6b30</color>
-
 
     <color name="material_pink">#f50057</color>
     <color name="material_red">#d50000</color>

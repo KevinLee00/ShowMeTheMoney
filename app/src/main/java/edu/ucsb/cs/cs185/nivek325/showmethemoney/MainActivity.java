@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -21,11 +20,6 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 
 public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment
         .OnFragmentInteractionListener, FuturePaymentsFragment.OnFragmentInteractionListener {
-    private TransactionAdapter adapter;
-
-    private FuturePaymentsFragment future;
-
-    private MainProgressBarFragment progressBarFragment;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -35,20 +29,20 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
 
+    private TransactionAdapter adapter;
+    private FuturePaymentsFragment future;
+    private MainProgressBarFragment progressBarFragment;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //toolbar.setLogo(R.drawable.ic_money);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -69,8 +63,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         tabLayout.setupWithViewPager(mViewPager);
 
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fab_menu);
-
         final FloatingActionButton tfab = (FloatingActionButton) findViewById(R.id.add_transaction);
+        final FloatingActionButton pfab = (FloatingActionButton) findViewById(R.id.schedule_payment);
 
         tfab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +76,6 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
             }
         });
 
-        final FloatingActionButton pfab = (FloatingActionButton) findViewById(R.id
-                .schedule_payment);
         pfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
     public void onFragmentInteraction(Uri uri) {
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -152,9 +142,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
             } else {
                 return future;
             }
-
         }
-
 
         @Override
         public int getCount() {

@@ -1,6 +1,7 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -51,22 +52,21 @@ public class TransactionAdapter extends BaseAdapter {
 
         TextView title = (TextView) v.findViewById(R.id.title);
         TextView amount = (TextView) v.findViewById(R.id.amount);
+        TextView date = (TextView) v.findViewById(R.id.date);
 
         title.setText(transaction.getTitle());
         amount.setText(String.format(Locale.US, "$%.1f", transaction.getAmount()));
+        date.setText(transaction.getDate());
 
         ImageView icon = (ImageView) v.findViewById(R.id.circle);
         if (transaction.getColor() == 0)
-            icon.setColorFilter(context.getResources().getColor(R.color.primaryOrange));
+            icon.setColorFilter(ContextCompat.getColor(context, R.color.primaryOrange));
         else if (transaction.getColor() == 1)
-            icon.setColorFilter(context.getResources().getColor(R.color.primaryPink));
+            icon.setColorFilter(ContextCompat.getColor(context, R.color.primaryPink));
         else if (transaction.getColor() == 2)
-            icon.setColorFilter(context.getResources().getColor(R.color.material_light_blue));
+            icon.setColorFilter(ContextCompat.getColor(context, R.color.material_light_blue));
         else
-            icon.setColorFilter(context.getResources().getColor(R.color.primaryPurple));
-
-
-
+            icon.setColorFilter(ContextCompat.getColor(context, R.color.primaryPurple));
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) icon
                 .getLayoutParams();

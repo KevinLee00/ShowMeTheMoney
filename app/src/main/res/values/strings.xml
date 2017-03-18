@@ -5,6 +5,9 @@
     <string name="app_name_spaces">Show Me The Money</string>
     <string name="transaction_title">Title</string>
     <string name="amount">Amount</string>
+    <string name="title">Show Me The Money</string>
     <string name="choose_a_category">Choose a category</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="pick_date">Pick a date</string>
 
 </resources>

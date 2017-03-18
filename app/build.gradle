@@ -42,7 +42,6 @@ dependencies {
         exclude group: 'com.rengwuxian.materialedittext', module: 'library'
     }
 
-    compile 'com.yarolegovich:lovely-dialog:1.0.7'
     testCompile 'junit:junit:4.12'
     dependencies {
         repositories {
