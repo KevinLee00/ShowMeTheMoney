@@ -35,10 +35,9 @@
 
         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
             android:id="@+id/progress_1"
-            android:layout_height="50dp"
-            android:layout_width="300dp"
             android:layout_gravity="center_horizontal"
             app:rcProgressColor="@color/primaryDarkerGreen"
+            app:rcProgress="73"
             style="@style/default_progress"/>
 
 
@@ -97,50 +96,50 @@
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:id="@+id/progress_detail_1"
-                android:layout_height="@dimen/progress_bar_height"
-                android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                style="@style/default_progress"
-                app:rcProgressColor="@color/primaryPink"
+                app:rcProgressColor="@color/primaryBlue"
+                app:rcProgress="10"
+                style="@style/detailed_progress"
+
                 />
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:id="@+id/progress_detail_2"
-                android:layout_height="@dimen/progress_bar_height"
-                android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                style="@style/default_progress"
-                app:rcProgressColor="@color/primaryAmber"
+                app:rcProgressColor="@color/primaryGreen"
+                app:rcProgress="25"
+                style="@style/detailed_progress"
+
                 />
 
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:id="@+id/progress_detail_3"
-                android:layout_height="@dimen/progress_bar_height"
-                android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                style="@style/default_progress"
-                app:rcProgressColor="@color/primaryBlue"
+                app:rcProgressColor="@color/primaryRed"
+                app:rcProgress="50"
+                style="@style/detailed_progress"
+
                 />
 
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:id="@+id/progress_detail_4"
-                android:layout_height="@dimen/progress_bar_height"
-                android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                style="@style/default_progress"
-                app:rcProgressColor="@color/primaryPurple"
+                app:rcProgressColor="@color/primaryOrange"
+                app:rcProgress="75"
+                style="@style/detailed_progress"
+
                 />
 
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:id="@+id/progress_detail_5"
-                android:layout_height="@dimen/progress_bar_height"
-                android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
-                style="@style/default_progress"
-                app:rcProgressColor="@color/primaryGreen"
+                app:rcProgressColor="@color/primaryPurple"
+                app:rcProgress="90"
+                style="@style/detailed_progress"
+
                 />
             </LinearLayout>
 

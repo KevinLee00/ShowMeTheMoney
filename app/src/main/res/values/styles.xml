@@ -67,14 +67,27 @@
     </style>
 
     <style name="default_progress">
-        <item name="rcProgress">70.0</item>
         <item name="rcMax">100.0</item>
-        <item name="rcRadius">15dp</item>
-        <item name="rcBackgroundPadding">4dp</item>
+        <item name="rcRadius">10dp</item>
+        <item name="rcBackgroundPadding">3dp</item>
         <item name="rcBackgroundColor">@color/progress_background</item>
         <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">300dp</item>
+
 
     </style>
+
+    <style name="detailed_progress">
+        <item name="rcMax">100.0</item>
+        <item name="rcRadius">10dp</item>
+        <item name="rcBackgroundPadding">3dp</item>
+        <item name="rcBackgroundColor">@color/progress_background</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">400dp</item>
+    </style>
+
 
 
     <style name="sans_serif" parent="TextAppearance.Design.Tab">

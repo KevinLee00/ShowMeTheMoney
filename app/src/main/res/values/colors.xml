@@ -4,7 +4,10 @@
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="progress_background">#424242</color>
+    <color name="main_background">#e0e0e0</color>
+    <color name="black_text">#161a24</color>
+
+    <color name="progress_background">#161a24</color>
 
     <color name="dark_toolbars">#161a24</color>
     <color name="dark_background">#242832</color>
@@ -12,17 +15,16 @@
     <color name="white">#dcdbdb</color>
     <color name="date_color">#777777</color>
 
-    <color name="main_background">#e0e0e0</color>
-    <color name="black_text">#161a24</color>
 
 
-    <color name="primaryGreen">#60AC7B</color>
+    <color name="primaryGreen">#a2faa3</color>
     <color name="primaryDarkerGreen">#00ae60</color>
-    <color name="primaryOrange">#FFA059</color>
-    <color name="primaryPink">#F9669A</color>
-    <color name="primaryBlue">#72C4FC</color>
-    <color name="primaryPurple">#B09EFF</color>
-    <color name="primaryAmber">#ffda6d</color>
+    <color name="primaryOrange">#F1A94E </color>
+    <color name="primaryPink">#ff3e82</color>
+    <color name="primaryRed">#E45641</color>
+    <color name="primaryBlue">#44B3C2</color>
+    <color name="primaryPurple">#7c67ac</color>
+    <color name="primaryAmber">#ff6b30</color>
 
 
     <color name="material_pink">#f50057</color>
