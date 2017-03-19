@@ -10,5 +10,8 @@
     <string name="add_transaction">Add Transaction</string>
     <string name="add_payment">Schedule Payment</string>
     <string name="pick_date">Pick a date</string>
-
+    <string name="food_budget">Food Budget</string>
+    <string name="entertainment_budget">Entertainment Budget</string>
+    <string name="living_budget">Living Cost Budget</string>
+    <string name="other_budget">Other Expenses Budget</string>
 </resources>

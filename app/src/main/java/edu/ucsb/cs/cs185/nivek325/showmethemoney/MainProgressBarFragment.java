@@ -51,10 +51,10 @@ public class MainProgressBarFragment extends Fragment {
     private float spentOnOtherCosts = 0.0f;
     private float totalSpent = 0.0f;
 
-    private float allottedForFood = 3000.0f;
-    private float allottedForEntertainment = 5000.0f;
-    private float allottedForLivingExpenses = 3000.0f;
-    private float allottedForOtherCosts = 1000.0f;
+    private float allottedForFood = BudgetManager.getFoodBudget();
+    private float allottedForEntertainment = BudgetManager.getEntertainmentBudget();
+    private float allottedForLivingExpenses = BudgetManager.getLivingBudget();
+    private float allottedForOtherCosts = BudgetManager.getOtherBudget();
     private float totalAllotted;
 
     private String HTMLOpenGreenTag = "<b><font color='#20CD5F'>";
@@ -114,22 +114,61 @@ public class MainProgressBarFragment extends Fragment {
         spentOther = (TextView) view.findViewById(R.id.category_spent_4);
         allottedOther = (TextView) view.findViewById(R.id.category_total_4);
 
+
         foodBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Food Bar", Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putString("category", "Food");
+                SetBudgetDialog setBudgetDialog = new SetBudgetDialog();
+                setBudgetDialog.setArguments(bundle);
+                setBudgetDialog.show(getActivity().getFragmentManager(), "food");
             }
         });
+
         entertainmentBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("category", "Entertainment");
+                SetBudgetDialog setBudgetDialog = new SetBudgetDialog();
+                setBudgetDialog.setArguments(bundle);
+                setBudgetDialog.show(getActivity().getFragmentManager(), "entertainment");
+            }
+        });
 
+        livingBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("category", "Living");
+                SetBudgetDialog setBudgetDialog = new SetBudgetDialog();
+                setBudgetDialog.setArguments(bundle);
+                setBudgetDialog.show(getActivity().getFragmentManager(), "living");
+            }
+        });
+
+        otherBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("category", "Other");
+                SetBudgetDialog setBudgetDialog = new SetBudgetDialog();
+                setBudgetDialog.setArguments(bundle);
+                setBudgetDialog.show(getActivity().getFragmentManager(), "other");
             }
         });
 
         updateFragment();
         return view;
+    }
 
+    void updateBudget() {
+        allottedForFood = BudgetManager.getFoodBudget();
+        allottedForEntertainment = BudgetManager.getEntertainmentBudget();
+        allottedForLivingExpenses = BudgetManager.getLivingBudget();
+        allottedForOtherCosts = BudgetManager.getOtherBudget();
+        totalAllotted = allottedForFood + allottedForEntertainment + allottedForLivingExpenses + allottedForOtherCosts;
     }
 
     void updateAmountSpent() {
@@ -156,7 +195,7 @@ public class MainProgressBarFragment extends Fragment {
                     spentOnLivingExpenses += amount;
                     break;
 
-                case ("Other"):
+                case ("Other Cost"):
                     spentOnOtherCosts += amount;
                     break;
             }
@@ -165,6 +204,7 @@ public class MainProgressBarFragment extends Fragment {
 
     void updateFragment() {
         updateAmountSpent();
+        updateBudget();
 
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         NumberFormat pf = NumberFormat.getPercentInstance();
@@ -178,10 +218,12 @@ public class MainProgressBarFragment extends Fragment {
             mainBar.setProgressColor(getResources().getColor(R.color.material_amber));
             totalBar.setProgressColor(getResources().getColor(R.color.material_amber));
             allottedTotal.setTextColor(getResources().getColor(R.color.material_amber));
-            allottedFood.setTextColor(getResources().getColor(R.color.material_amber));
-            allottedEntertainment.setTextColor(getResources().getColor(R.color.material_amber));
-            allottedLiving.setTextColor(getResources().getColor(R.color.material_amber));
-            allottedOther.setTextColor(getResources().getColor(R.color.material_amber));
+
+
+//            allottedFood.setTextColor(getResources().getColor(R.color.material_amber));
+//            allottedEntertainment.setTextColor(getResources().getColor(R.color.material_amber));
+//            allottedLiving.setTextColor(getResources().getColor(R.color.material_amber));
+//            allottedOther.setTextColor(getResources().getColor(R.color.material_amber));
         }
 
         else if (totalSpent > totalAllotted) {
@@ -191,16 +233,16 @@ public class MainProgressBarFragment extends Fragment {
             mainBar.setProgressColor(getResources().getColor(R.color.material_red));
             totalBar.setProgressColor(getResources().getColor(R.color.material_red));
             allottedTotal.setTextColor(getResources().getColor(R.color.material_red));
-            allottedFood.setTextColor(getResources().getColor(R.color.material_red));
-            allottedEntertainment.setTextColor(getResources().getColor(R.color.material_red));
-            allottedLiving.setTextColor(getResources().getColor(R.color.material_red));
-            allottedOther.setTextColor(getResources().getColor(R.color.material_red));
+
+
 
         }
         else {
             amtLeft.setText(Html.fromHtml("You have " + HTMLOpenGreenTag + nf.format(totalAllotted - totalSpent) + HTMLEndTag+ " left to spend."));
             perLeft.setText(Html.fromHtml("You've used " + HTMLOpenGreenTag + pf.format(percentageSpent) + HTMLEndTag+ " of your monthly budget."));
 
+            amountTotalLabel.setTextColor(getResources().getColor(R.color.black_text));
+            allottedTotal.setTextColor(getResources().getColor(R.color.black_text));
         }
 
         amountSpentLabel.setText(String.valueOf(nf.format(totalSpent)) + " of ");
@@ -225,6 +267,10 @@ public class MainProgressBarFragment extends Fragment {
         foodBar.setProgress(spentOnFood);
         if (spentOnFood > allottedForFood) {
             foodBar.setProgressColor(Color.parseColor("#d50000"));
+            allottedFood.setTextColor(getResources().getColor(R.color.material_red));
+        } else {
+            foodBar.setProgressColor(getResources().getColor(R.color.primaryOrange));
+            allottedFood.setTextColor(getResources().getColor(R.color.black_text));
         }
         foodBar.invalidate();
 
@@ -234,6 +280,11 @@ public class MainProgressBarFragment extends Fragment {
         entertainmentBar.setProgress(spentOnEntertainment);
         if (spentOnEntertainment > allottedForEntertainment) {
             entertainmentBar.setProgressColor(Color.parseColor("#d50000"));
+            allottedEntertainment.setTextColor(getResources().getColor(R.color.material_red));
+
+        } else {
+            entertainmentBar.setProgressColor(getResources().getColor(R.color.primaryPink));
+            allottedEntertainment.setTextColor(getResources().getColor(R.color.black_text));
         }
         entertainmentBar.invalidate();
 
@@ -243,6 +294,10 @@ public class MainProgressBarFragment extends Fragment {
         livingBar.setProgress(spentOnLivingExpenses);
         if (spentOnLivingExpenses > allottedForLivingExpenses) {
             livingBar.setProgressColor(Color.parseColor("#d50000"));
+            allottedLiving.setTextColor(getResources().getColor(R.color.material_red));
+        } else {
+            livingBar.setProgressColor(getResources().getColor(R.color.material_light_blue));
+            allottedLiving.setTextColor(getResources().getColor(R.color.black_text));
         }
         livingBar.invalidate();
 
@@ -253,6 +308,10 @@ public class MainProgressBarFragment extends Fragment {
         otherBar.setProgress(spentOnOtherCosts);
         if (spentOnOtherCosts > allottedForOtherCosts) {
             otherBar.setProgressColor(Color.parseColor("#d50000"));
+            allottedOther.setTextColor(getResources().getColor(R.color.material_red));
+        } else {
+            otherBar.setProgressColor(getResources().getColor(R.color.primaryPurple));
+            allottedOther.setTextColor(getResources().getColor(R.color.black_text));
         }
         otherBar.invalidate();
     }

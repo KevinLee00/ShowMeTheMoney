@@ -22,9 +22,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
-            android:background="@color/primaryDarkerGreen"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:theme="@style/ToolbarColoredBackArrow">
+            android:gravity="top|start"
+            >
+
 
             <TextView
                 android:layout_width="match_parent"

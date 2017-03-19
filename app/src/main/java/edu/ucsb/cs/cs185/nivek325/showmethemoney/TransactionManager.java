@@ -23,16 +23,19 @@ public class TransactionManager {
         for (int i = 1; i <= 5; i++) {
             switch (i) {
                 case 1:
+                    ITEMS.add(new Transaction("Dinner Party", 100 * i, "Other Cost", "Fri, Mar 18, 2017"));
+                    break;
                 case 2:
-                    ITEMS.add(new Transaction("Food", 500 * i, "Food", "Fri, Mar 17, 2017"));
+                    ITEMS.add(new Transaction("Burger King", 5 * i, "Food", "Fri, Mar 17, 2017"));
                     break;
                 case 3:
+                    ITEMS.add(new Transaction("Groceries", 20 * i, "Food", "Fri, Mar 17, 2017"));
+                    break;
                 case 4:
-                    ITEMS.add(new Transaction("Entertainment", 500 * i, "Entertainment", "Thur, " +
-                            "Mar 16, 2017"));
+                    ITEMS.add(new Transaction("Movies", 4 * i, "Entertainment", "Thur, Mar 16, 2017"));
                     break;
                 default:
-                    ITEMS.add(new Transaction("Living Expenses", 500 * i, "Living Expenses",
+                    ITEMS.add(new Transaction("Rent", 200 * i, "Living Expenses",
                             "Mon, Mar 13, 2017"));
             }
         }
