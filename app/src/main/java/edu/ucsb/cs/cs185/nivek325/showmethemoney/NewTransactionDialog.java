@@ -72,8 +72,6 @@ public class NewTransactionDialog extends DialogFragment {
             public void onClick(View view) {
                 selectedTitle = titleEditText.getText().toString();
                 selectedCategory = spinner.getText().toString();
-                MediaPlayer chaching = MediaPlayer.create(getContext(), R.raw.chaching);
-                chaching.start();
                 wantToClose = (!selectedTitle.trim().equalsIgnoreCase("") && !amountEditText
                         .getText().toString().trim().equalsIgnoreCase("") && !selectedCategory
                         .equalsIgnoreCase(""));
@@ -98,9 +96,8 @@ public class NewTransactionDialog extends DialogFragment {
                     TransactionManager.addTransaction(newTransaction);
                     MainActivity.progressBarFragment.updateFragment();
 
-
-
-
+                    MediaPlayer chaching = MediaPlayer.create(getContext(), R.raw.chaching);
+                    chaching.start();
                     dialog.dismiss();
 
                 }

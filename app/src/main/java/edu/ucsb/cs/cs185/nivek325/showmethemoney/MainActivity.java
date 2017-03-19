@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -26,6 +27,10 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
+import java.util.Calendar;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment
         .OnFragmentInteractionListener, FuturePaymentsFragment.OnFragmentInteractionListener {
@@ -136,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
                 future.addCalendarEvent(event1);
                 NewPaymentScheduleDialog pdialog = new NewPaymentScheduleDialog();
                 pdialog.show(getFragmentManager(), "newPayment");
+
                 fabMenu.collapse();
 
             }
