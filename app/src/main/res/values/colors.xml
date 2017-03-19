@@ -5,14 +5,17 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="main_background">#bdbdbd</color>
+    <color name="main_background">#F8F8F8</color>
     <color name="black_text">#616161</color>
 
     <color name="progress_background">#161a24</color>
 
+    <color name="dark_calendar_background">#2b303c</color>
+    <color name="light_calendar_background">#E8E8E8</color>
+
+
     <color name="dark_toolbars">#161a24</color>
     <color name="dark_background">#242832</color>
-    <color name="dark_calendar_background">#2b303c</color>
     <color name="date_color">#777777</color>
 
     <color name="primaryGreen">#00c853</color>

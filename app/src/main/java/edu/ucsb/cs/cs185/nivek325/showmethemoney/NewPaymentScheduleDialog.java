@@ -1,15 +1,20 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 
+import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
@@ -47,7 +52,10 @@ public class NewPaymentScheduleDialog extends DialogFragment {
                 .amount_edit_text_pay);
 
         final MaterialBetterSpinner spinner = (MaterialBetterSpinner) view.findViewById(R.id
-                .category_spinner);
+                .category_spinner_pay);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout
+                .simple_spinner_dropdown_item, TransactionManager.categories);
+        spinner.setAdapter(adapter);
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
@@ -69,9 +77,11 @@ public class NewPaymentScheduleDialog extends DialogFragment {
             public void onClick(View view) {
                 selectedTitle = titleEditText.getText().toString();
                 selectedCategory = spinner.getText().toString();
-
+                MediaPlayer chaching = MediaPlayer.create(getContext(), R.raw.chaching);
+                chaching.start();
                 wantToClose = (!selectedTitle.trim().equalsIgnoreCase("") && !amountEditText
-                        .getText().toString().trim().equalsIgnoreCase(""));
+                        .getText().toString().trim().equalsIgnoreCase("") && !selectedCategory
+                        .equalsIgnoreCase(""));
 
                 if (selectedTitle.trim().equalsIgnoreCase("")) {
                     Log.i("info", "title empty");
@@ -82,6 +92,9 @@ public class NewPaymentScheduleDialog extends DialogFragment {
                 } else {
                     selectedAmount = Float.parseFloat(amountEditText.getText().toString());
                 }
+                if (selectedCategory.equalsIgnoreCase("")) {
+                    spinner.setError("Category cannot be blank");
+                }
 
                 if (wantToClose) {
                     TransactionManager.Transaction newTransaction = new TransactionManager
@@ -89,18 +102,56 @@ public class NewPaymentScheduleDialog extends DialogFragment {
                             selectedDate);
                     TransactionManager.addTransaction(newTransaction);
                     MainActivity.progressBarFragment.updateFragment();
+
+                    long ldate = selectedDate.getTime();
+                    Event event = new Event(R.color.primaryPink, ldate);
+                    FuturePaymentsFragment.addCalendarEvent(event);
                     dialog.dismiss();
+
                 }
             }
         });
 
+
         final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         final MaterialEditText dateEditText = (MaterialEditText) view.findViewById(R.id
                 .date_edit_text_pay);
         final SimpleDateFormat dateFormat = new SimpleDateFormat("E, MMM d, yyyy", Locale.US);
 
+        // If user doesn't choose a date, default to current date
+        selectedDate = calendar.getTime();
+        selectedDateString = dateFormat.format(selectedDate);
+        dateEditText.setText(selectedDateString);
+
+        DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                calendar.set(i, i1, i2);
+                selectedDate = calendar.getTime();
+                selectedDateString = dateFormat.format(selectedDate);
+                dateEditText.setText(selectedDateString);
+            }
+        };
+
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), listener, year,
+                month, day);
+
+        DatePicker datePicker = datePickerDialog.getDatePicker();
+        datePicker.setMinDate(calendar.getTimeInMillis());
+
+        dateEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePickerDialog.show();
+            }
+        });
+
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
 
         return dialog;
 

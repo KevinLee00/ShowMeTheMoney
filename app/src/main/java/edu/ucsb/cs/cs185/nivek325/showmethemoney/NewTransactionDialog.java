@@ -97,7 +97,12 @@ public class NewTransactionDialog extends DialogFragment {
                             selectedDate);
                     TransactionManager.addTransaction(newTransaction);
                     MainActivity.progressBarFragment.updateFragment();
+
+
+
+
                     dialog.dismiss();
+
                 }
             }
         });
@@ -130,6 +135,7 @@ public class NewTransactionDialog extends DialogFragment {
                 month, day);
 
         DatePicker datePicker = datePickerDialog.getDatePicker();
+        datePicker.setMinDate(1490040000000L);
         datePicker.setMaxDate(calendar.getTimeInMillis());
 
         dateEditText.setOnClickListener(new View.OnClickListener() {

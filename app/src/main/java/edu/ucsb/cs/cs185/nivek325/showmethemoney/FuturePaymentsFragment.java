@@ -1,9 +1,11 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +19,10 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import static android.content.ContentValues.TAG;
 import static edu.ucsb.cs.cs185.nivek325.showmethemoney.R.id.month;
 
 
@@ -32,7 +36,7 @@ public class FuturePaymentsFragment extends Fragment {
 
     private OnFragmentInteractionListener dListener;
     private TransactionAdapter transactionAdapter;
-    private CustomCalendarView customCalendarView;
+    private static CustomCalendarView customCalendarView;
 
     public FuturePaymentsFragment() {
         // Required empty public constructor
@@ -57,6 +61,13 @@ public class FuturePaymentsFragment extends Fragment {
 
         }
     }
+
+    public static void addCalendarEvent(Event e)
+    {
+        customCalendarView.addEvent(e, true);
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +80,24 @@ public class FuturePaymentsFragment extends Fragment {
         customCalendarView.shouldScrollMonth(false);
         customCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
 
+        Event ev1 = new Event(getResources().getColor(R.color.primaryPink), 1489363200050L, "Some extra data that I want to store.");
+        customCalendarView.addEvent(ev1);
+
+        Event ev2= new Event(R.color.primaryPink, 1490040000000L, "Some extra data that I want to store.");
+        customCalendarView.addEvent(ev2);
+
+        Event ev3= new Event(R.color.primaryPink, 1490035000000L, "Some extra data that I want to store.");
+        customCalendarView.addEvent(ev3);
+
+        Event ev4= new Event(R.color.primaryPink, 1490034000000L, "Some extra data that I want to store.");
+        customCalendarView.addEvent(ev4);
+
+        Event ev5 = new Event(R.color.primaryPink, 1490033000000L, "Some extra data that I want to store.");
+        customCalendarView.addEvent(ev5);
+
+        List<Event> events = customCalendarView.getEvents(1489363200000L);
+        Log.d(TAG, "Events: " + events);
+
         final TextView monthTitle = (TextView) view.findViewById(month);
 
         final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM yyyy", Locale.getDefault());
@@ -78,6 +107,9 @@ public class FuturePaymentsFragment extends Fragment {
         customCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
+
+                List<Event> events = customCalendarView.getEvents(dateClicked);
+                Log.d(TAG, "Day was clicked: " + dateClicked + " with events " + events);
 
             }
 
@@ -129,9 +161,6 @@ public class FuturePaymentsFragment extends Fragment {
         dListener = null;
     }
 
-    public void addCalendarEvent(Event event) {
-        customCalendarView.addEvent(event, true);
-    }
 
     /**
      * This interface must be implemented by activities that contain this
