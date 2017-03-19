@@ -5,10 +5,10 @@ package edu.ucsb.cs.cs185.nivek325.showmethemoney;
  */
 
 public class BudgetManager {
-    private static float foodBudget = 4000.0f;
-    private static float entertainmentBudget = 3000.0f;
+    private static float foodBudget = 500.0f;
+    private static float entertainmentBudget = 100.0f;
     private static float livingBudget = 2000.0f;
-    private static float otherBudget = 500.0f;
+    private static float otherBudget = 300.0f;
 
 
     public static void setFoodBudget(float foodBudget) {
