@@ -53,28 +53,39 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fab_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/fab_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="end|bottom"
-        fab:fab_labelStyle="@style/menu_labels_style"
-        fab:fab_labelsPosition="left">
+        android:gravity="bottom|end">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/schedule_payment"
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fab_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/primaryGreen"
-            fab:fab_title="Schedule Payment"/>
+            android:layout_gravity="end|bottom"
+            fab:fab_labelStyle="@style/menu_labels_style"
+            fab:fab_labelsPosition="left">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_transaction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/white"
-            fab:fab_title="Add Transaction"/>
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/schedule_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/primaryGreen"
+                fab:fab_title="Schedule Payment"/>
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_transaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/white"
+                fab:fab_title="Add Transaction"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

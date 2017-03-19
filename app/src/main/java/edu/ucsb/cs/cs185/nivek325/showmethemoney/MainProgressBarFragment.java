@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.text.NumberFormat;
 
@@ -77,6 +77,29 @@ public class MainProgressBarFragment extends Fragment {
                     return true;
                 }
                 return false;
+            }
+        });
+
+
+        SlidingUpPanelLayout slidingUpPanelLayout = (SlidingUpPanelLayout) view.findViewById(R.id
+                .sliding_layout);
+        slidingUpPanelLayout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+
+            }
+
+            @Override
+            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+                if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
+                    MainActivity.fabMenu.setVisibility(View.GONE);
+                } else {
+                    MainActivity.fabMenu.setVisibility(View.VISIBLE);
+                }
+                if (newState == SlidingUpPanelLayout.PanelState.DRAGGING && previousState ==
+                        SlidingUpPanelLayout.PanelState.EXPANDED) {
+                    MainActivity.fabMenu.setVisibility(View.GONE);
+                }
             }
         });
 

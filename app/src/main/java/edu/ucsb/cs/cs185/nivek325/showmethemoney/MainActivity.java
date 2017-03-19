@@ -16,13 +16,16 @@ import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment
         .OnFragmentInteractionListener, FuturePaymentsFragment.OnFragmentInteractionListener {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
     public static MainProgressBarFragment progressBarFragment;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    public static FloatingActionsMenu fabMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,27 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         mViewPager.setCurrentItem(1);
         mViewPager.setOffscreenPageLimit(2);
 
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0 || position == 2) {
+                    MainActivity.fabMenu.setVisibility(View.VISIBLE);
+                }
+
+                View progressView = MainActivity.progressBarFragment.getView();
+                if (progressView != null) {
+                    SlidingUpPanelLayout slidingUpPanelLayout = (SlidingUpPanelLayout) progressView
+                            .findViewById(R.id.sliding_layout);
+                    if (slidingUpPanelLayout.getPanelState() == SlidingUpPanelLayout.PanelState
+                            .EXPANDED && position == 1) {
+                        MainActivity.fabMenu.setVisibility(View.GONE);
+                    }
+                } else {
+                    Log.i("info", "NULL");
+                }
+            }
+        });
+
         adapter = new TransactionAdapter(this);
 
         future = new FuturePaymentsFragment();
@@ -68,9 +93,28 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
 
-        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fab_menu);
+        final LinearLayout fabLayout = (LinearLayout) findViewById(R.id.fab_container);
+        fabMenu = (FloatingActionsMenu) findViewById(R.id.fab_menu);
         final FloatingActionButton tfab = (FloatingActionButton) findViewById(R.id.add_transaction);
         final FloatingActionButton pfab = (FloatingActionButton) findViewById(R.id.schedule_payment);
+
+        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                fabLayout.setClickable(true);
+                fabLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        fabMenu.collapse();
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                fabLayout.setClickable(false);
+            }
+        });
 
         tfab.setOnClickListener(new View.OnClickListener() {
             @Override

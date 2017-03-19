@@ -1,6 +1,5 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
@@ -10,8 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
@@ -60,7 +57,7 @@ public class NewPaymentScheduleDialog extends DialogFragment {
         }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // Need this code to add the positibe button
+                // Need this code to add the positive button
                 // Actual code is below
             }
         });
@@ -89,7 +86,7 @@ public class NewPaymentScheduleDialog extends DialogFragment {
                 if (wantToClose) {
                     TransactionManager.Transaction newTransaction = new TransactionManager
                             .Transaction(selectedTitle, selectedAmount, selectedCategory,
-                            selectedDateString);
+                            selectedDate);
                     TransactionManager.addTransaction(newTransaction);
                     MainActivity.progressBarFragment.updateFragment();
                     dialog.dismiss();

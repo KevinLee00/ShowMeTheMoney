@@ -1,6 +1,9 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class TransactionManager {
@@ -12,6 +15,12 @@ public class TransactionManager {
 
     public static void addTransaction(Transaction transaction) {
         ITEMS.add(0, transaction);
+        Collections.sort(ITEMS, new Comparator<Transaction>() {
+            @Override
+            public int compare(Transaction transaction, Transaction t1) {
+                return transaction.getDate().compareTo(t1.getDate()) * -1;
+            }
+        });
         listener.onAddTransaction();
     }
 
@@ -23,20 +32,17 @@ public class TransactionManager {
         for (int i = 1; i <= 5; i++) {
             switch (i) {
                 case 1:
-                    ITEMS.add(new Transaction("Dinner Party", 100 * i, "Other Cost", "Fri, Mar 18, 2017"));
-                    break;
                 case 2:
-                    ITEMS.add(new Transaction("Burger King", 5 * i, "Food", "Fri, Mar 17, 2017"));
+                    ITEMS.add(new Transaction("Food", 500 * i, "Food", new Date(1489722963000L)));
                     break;
                 case 3:
-                    ITEMS.add(new Transaction("Groceries", 20 * i, "Food", "Fri, Mar 17, 2017"));
-                    break;
                 case 4:
-                    ITEMS.add(new Transaction("Movies", 4 * i, "Entertainment", "Thur, Mar 16, 2017"));
+                    ITEMS.add(new Transaction("Entertainment", 500 * i, "Entertainment", new Date
+                            (1489636563000L)));
                     break;
                 default:
-                    ITEMS.add(new Transaction("Rent", 200 * i, "Living Expenses",
-                            "Mon, Mar 13, 2017"));
+                    ITEMS.add(new Transaction("Living Expenses", 500 * i, "Living Expenses", new
+                            Date(1489377363000L)));
             }
         }
         categories.add("Food");
@@ -55,9 +61,9 @@ public class TransactionManager {
         private final float amount;
         private final String category;
         private final int color;
-        private final String date;
+        private final Date date;
 
-        public Transaction(String title, float amount, String category, String date) {
+        public Transaction(String title, float amount, String category, Date date) {
             this.title = title;
             this.amount = amount;
             this.category = category;
@@ -88,7 +94,7 @@ public class TransactionManager {
             return color;
         }
 
-        public String getDate() {
+        public Date getDate() {
             return date;
         }
     }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class TransactionAdapter extends BaseAdapter {
@@ -56,7 +57,10 @@ public class TransactionAdapter extends BaseAdapter {
 
         title.setText(transaction.getTitle());
         amount.setText(String.format(Locale.US, "$%.2f", transaction.getAmount()));
-        date.setText(transaction.getDate());
+
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("E, MMM d, yyyy", Locale.US);
+
+        date.setText(dateFormat.format(transaction.getDate()));
 
         ImageView icon = (ImageView) v.findViewById(R.id.circle);
         if (transaction.getColor() == 0)

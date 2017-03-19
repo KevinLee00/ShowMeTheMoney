@@ -56,6 +56,7 @@ public class TransactionHistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_transaction_history_list, container, false);
+
         ListView listView = (ListView) view.findViewById(R.id.list_view);
         listView.setAdapter(transactionAdapter);
         return view;
