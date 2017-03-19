@@ -266,6 +266,9 @@ public class MainProgressBarFragment extends Fragment {
 
             amountTotalLabel.setTextColor(getResources().getColor(R.color.black_text));
             allottedTotal.setTextColor(getResources().getColor(R.color.black_text));
+            mainBar.setProgressColor(getResources().getColor(R.color.primaryGreen));
+            totalBar.setProgressColor(getResources().getColor(R.color.primaryGreen));
+
         }
 
         amountSpentLabel.setText(String.valueOf(nf.format(totalSpent)) + " of ");
