@@ -2,17 +2,10 @@ package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +21,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class NewTransactionDialog extends DialogFragment {
+/**
+ * Created by Wesley on 3/18/2017.
+ */
+
+public class NewPaymentScheduleDialog extends DialogFragment {
     private String selectedTitle;
     private float selectedAmount;
     private String selectedCategory;
@@ -36,7 +33,7 @@ public class NewTransactionDialog extends DialogFragment {
     private String selectedDateString;
     private boolean wantToClose;
 
-    public NewTransactionDialog() {
+    public NewPaymentScheduleDialog() {
 
     }
 
@@ -44,19 +41,16 @@ public class NewTransactionDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View view = View.inflate(getActivity(), R.layout.new_transaction_dialog, null);
+        View view = View.inflate(getActivity(), R.layout.new_payment_dialog, null);
         builder.setView(view);
 
         final MaterialEditText titleEditText = (MaterialEditText) view.findViewById(R.id
-                .title_edit_text);
+                .title_edit_text_pay);
         final MaterialEditText amountEditText = (MaterialEditText) view.findViewById(R.id
-                .amount_edit_text);
+                .amount_edit_text_pay);
 
         final MaterialBetterSpinner spinner = (MaterialBetterSpinner) view.findViewById(R.id
                 .category_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout
-                .simple_spinner_dropdown_item, TransactionManager.categories);
-        spinner.setAdapter(adapter);
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
@@ -78,8 +72,7 @@ public class NewTransactionDialog extends DialogFragment {
             public void onClick(View view) {
                 selectedTitle = titleEditText.getText().toString();
                 selectedCategory = spinner.getText().toString();
-                MediaPlayer chaching = MediaPlayer.create(getContext(), R.raw.chaching);
-                chaching.start();
+
                 wantToClose = (!selectedTitle.trim().equalsIgnoreCase("") && !amountEditText
                         .getText().toString().trim().equalsIgnoreCase(""));
 
@@ -105,38 +98,10 @@ public class NewTransactionDialog extends DialogFragment {
         });
 
         final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         final MaterialEditText dateEditText = (MaterialEditText) view.findViewById(R.id
-                .date_edit_text);
+                .date_edit_text_pay);
         final SimpleDateFormat dateFormat = new SimpleDateFormat("E, MMM d, yyyy", Locale.US);
-
-        // If user doesn't choose a date, default to current date
-        selectedDate = calendar.getTime();
-        selectedDateString = dateFormat.format(selectedDate);
-        dateEditText.setText(selectedDateString);
-
-        DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                calendar.set(i, i1, i2);
-                selectedDate = calendar.getTime();
-                selectedDateString = dateFormat.format(selectedDate);
-                dateEditText.setText(selectedDateString);
-            }
-        };
-
-        final DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), listener, year,
-                month, day);
-
-        dateEditText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                datePickerDialog.show();
-            }
-        });
 
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 

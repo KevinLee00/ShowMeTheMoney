@@ -1,5 +1,9 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +11,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
+     * loaded fragment in memory. If this becomes too memory  sive, it
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
@@ -69,21 +75,23 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         tfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewTransactionDialog dialog = new NewTransactionDialog();
-                dialog.show(getSupportFragmentManager(), "newTransaction");
+                NewTransactionDialog tdialog = new NewTransactionDialog();
+                tdialog.show(getSupportFragmentManager(), "newTransaction");
 
                 fabMenu.collapse();
             }
         });
 
         pfab.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Event event = new Event(R.color.material_blue, 1489456484153L);
                 future.addCalendarEvent(event);
                 Event event1 = new Event(Color.RED, 1489456484153L);
                 future.addCalendarEvent(event1);
-
+                NewPaymentScheduleDialog pdialog = new NewPaymentScheduleDialog();
+                pdialog.show(getFragmentManager(), "newPayment");
                 fabMenu.collapse();
 
             }

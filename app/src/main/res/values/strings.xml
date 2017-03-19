@@ -8,6 +8,7 @@
     <string name="title">Show Me The Money</string>
     <string name="choose_a_category">Choose a category</string>
     <string name="add_transaction">Add Transaction</string>
+    <string name="add_payment">Schedule Payment</string>
     <string name="pick_date">Pick a date</string>
 
 </resources>
