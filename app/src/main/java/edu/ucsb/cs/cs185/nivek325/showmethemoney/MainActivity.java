@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
     private TransactionAdapter adapter;
     private FuturePaymentsFragment future;
-    private MainProgressBarFragment progressBarFragment;
+    public static MainProgressBarFragment progressBarFragment;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 

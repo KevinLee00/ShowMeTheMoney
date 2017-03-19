@@ -1,20 +1,18 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.graphics.Color;
-import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SlidingPaneLayout;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-
-import org.w3c.dom.Text;
 
 import java.text.NumberFormat;
 
@@ -71,9 +69,19 @@ public class MainProgressBarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.swipe_up, container, false);
 
+        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.swipe_layout);
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getActionMasked() == MotionEvent.ACTION_DOWN) {
+                    return true;
+                }
+                return false;
+            }
+        });
+
         totalAllotted = allottedForFood + allottedForEntertainment + allottedForLivingExpenses + allottedForOtherCosts;
         updateAmountSpent();
-
 
         // The green text views in the two sentences.
         amtLeft = (TextView) view.findViewById(R.id.amtSpent);
@@ -105,6 +113,19 @@ public class MainProgressBarFragment extends Fragment {
 
         spentOther = (TextView) view.findViewById(R.id.category_spent_4);
         allottedOther = (TextView) view.findViewById(R.id.category_total_4);
+
+        foodBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Food Bar", Toast.LENGTH_SHORT).show();
+            }
+        });
+        entertainmentBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         updateFragment();
         return view;
@@ -181,7 +202,6 @@ public class MainProgressBarFragment extends Fragment {
             perLeft.setText(Html.fromHtml("You've used " + HTMLOpenGreenTag + pf.format(percentageSpent) + HTMLEndTag+ " of your monthly budget."));
 
         }
-
 
         amountSpentLabel.setText(String.valueOf(nf.format(totalSpent)) + " of ");
         amountSpentLabel.invalidate();
