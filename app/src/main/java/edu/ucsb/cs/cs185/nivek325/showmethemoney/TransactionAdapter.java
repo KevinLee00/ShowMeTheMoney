@@ -55,7 +55,7 @@ public class TransactionAdapter extends BaseAdapter {
         TextView date = (TextView) v.findViewById(R.id.date);
 
         title.setText(transaction.getTitle());
-        amount.setText(String.format(Locale.US, "$%.1f", transaction.getAmount()));
+        amount.setText(String.format(Locale.US, "$%.2f", transaction.getAmount()));
         date.setText(transaction.getDate());
 
         ImageView icon = (ImageView) v.findViewById(R.id.circle);
