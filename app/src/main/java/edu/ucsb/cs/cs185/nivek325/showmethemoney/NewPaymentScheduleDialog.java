@@ -104,7 +104,7 @@ public class NewPaymentScheduleDialog extends DialogFragment {
                     MainActivity.progressBarFragment.updateFragment();
 
                     long ldate = selectedDate.getTime();
-                    Event event = new Event(R.color.primaryPink, ldate);
+                    Event event = new Event(getResources().getColor(R.color.primaryPink), ldate);
                     FuturePaymentsFragment.addCalendarEvent(event);
                     dialog.dismiss();
 
