@@ -80,7 +80,6 @@ public class MainProgressBarFragment extends Fragment {
             }
         });
 
-
         SlidingUpPanelLayout slidingUpPanelLayout = (SlidingUpPanelLayout) view.findViewById(R.id
                 .sliding_layout);
         slidingUpPanelLayout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {

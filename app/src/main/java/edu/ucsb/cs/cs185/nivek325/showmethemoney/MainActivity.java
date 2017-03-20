@@ -1,19 +1,11 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
-import android.app.AlarmManager;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,12 +17,7 @@ import android.widget.LinearLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-
-import java.util.Calendar;
-
-import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity implements TransactionHistoryFragment
         .OnFragmentInteractionListener, FuturePaymentsFragment.OnFragmentInteractionListener {
@@ -45,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
      */
 
     private TransactionAdapter adapter;
+    private FuturePaymentAdapter paymentAdapter;
     private FuturePaymentsFragment future;
     public static MainProgressBarFragment progressBarFragment;
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -90,9 +78,10 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         });
 
         adapter = new TransactionAdapter(this);
+        paymentAdapter = new FuturePaymentAdapter(this);
 
         future = new FuturePaymentsFragment();
-        future.setTransactionAdapter(adapter);
+        future.setFuturePaymentAdapter(paymentAdapter);
 
         // Connect tab layout with ViewPager
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -124,8 +113,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         tfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewTransactionDialog tdialog = new NewTransactionDialog();
-                tdialog.show(getSupportFragmentManager(), "newTransaction");
+                NewTransactionDialog dialog = new NewTransactionDialog();
+                dialog.show(getSupportFragmentManager(), "newTransaction");
 
                 fabMenu.collapse();
             }
@@ -135,12 +124,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
             @Override
             public void onClick(View view) {
-                Event event = new Event(R.color.material_blue, 1489456484153L);
-                future.addCalendarEvent(event);
-                Event event1 = new Event(Color.RED, 1489456484153L);
-                future.addCalendarEvent(event1);
-                NewPaymentScheduleDialog pdialog = new NewPaymentScheduleDialog();
-                pdialog.show(getFragmentManager(), "newPayment");
+                NewPaymentScheduleDialog dialog = new NewPaymentScheduleDialog();
+                dialog.show(getFragmentManager(), "newPayment");
 
                 fabMenu.collapse();
 

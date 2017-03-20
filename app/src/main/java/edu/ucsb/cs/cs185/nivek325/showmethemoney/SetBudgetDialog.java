@@ -9,18 +9,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
-
-import java.text.NumberFormat;
 
 
 public class SetBudgetDialog extends DialogFragment {
 
     private String category;
+    private Float budget;
 
-    public SetBudgetDialog(){ }
+    public SetBudgetDialog() {
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -63,24 +62,7 @@ public class SetBudgetDialog extends DialogFragment {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                final String maxBudget = editText.getText().toString();
-                final Float budget = Float.parseFloat(maxBudget);
 
-                switch (category) {
-                    case "Food":
-                        BudgetManager.setFoodBudget(budget);
-                        break;
-                    case "Entertainment":
-                        BudgetManager.setEntertainmentBudget(budget);
-                        break;
-                    case "Living":
-                        BudgetManager.setLivingBudget(budget);
-                        break;
-                    case "Other":
-                        BudgetManager.setOtherBudget(budget);
-                        break;
-                }
-                MainActivity.progressBarFragment.updateFragment();
             }
         });
 
@@ -91,7 +73,42 @@ public class SetBudgetDialog extends DialogFragment {
             }
         });
 
-        Dialog dialog = builder.create();
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean wantToClose = (!editText.getText().toString().trim().equalsIgnoreCase(""));
+
+                if (editText.getText().toString().equalsIgnoreCase("")) {
+                    editText.setError("Budget amount should not be blank");
+                } else {
+                    final String maxBudget = editText.getText().toString();
+                    budget = Float.parseFloat(maxBudget);
+                }
+
+                if (wantToClose) {
+                    switch (category) {
+                        case "Food":
+                            BudgetManager.setFoodBudget(budget);
+                            break;
+                        case "Entertainment":
+                            BudgetManager.setEntertainmentBudget(budget);
+                            break;
+                        case "Living":
+                            BudgetManager.setLivingBudget(budget);
+                            break;
+                        case "Other":
+                            BudgetManager.setOtherBudget(budget);
+                            break;
+                    }
+                    MainActivity.progressBarFragment.updateFragment();
+                    dialog.dismiss();
+                }
+            }
+        });
+
         return dialog;
     }
 }

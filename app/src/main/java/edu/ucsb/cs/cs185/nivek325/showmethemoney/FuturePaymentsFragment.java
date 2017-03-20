@@ -1,7 +1,6 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,15 +34,16 @@ import static edu.ucsb.cs.cs185.nivek325.showmethemoney.R.id.month;
 public class FuturePaymentsFragment extends Fragment {
 
     private OnFragmentInteractionListener dListener;
-    private TransactionAdapter transactionAdapter;
+    private FuturePaymentAdapter futurePaymentAdapter;
     private static CustomCalendarView customCalendarView;
+    public static Date currentDate;
 
     public FuturePaymentsFragment() {
         // Required empty public constructor
     }
 
-    public void setTransactionAdapter(TransactionAdapter transactionAdapter) {
-        this.transactionAdapter = transactionAdapter;
+    public void setFuturePaymentAdapter(FuturePaymentAdapter futurePaymentAdapter) {
+        this.futurePaymentAdapter = futurePaymentAdapter;
     }
 
     public static FuturePaymentsFragment newInstance() {
@@ -62,10 +62,7 @@ public class FuturePaymentsFragment extends Fragment {
         }
     }
 
-    public static void addCalendarEvent(Event e)
-    {
-        customCalendarView.addEvent(e, true);
-    }
+    public static void addCalendarEvent(Event e) { customCalendarView.addEvent(e, true); }
 
 
     @Override
@@ -74,29 +71,29 @@ public class FuturePaymentsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_future_payments, container, false);
         ListView listView = (ListView) view.findViewById(R.id.future_list);
-        listView.setAdapter(transactionAdapter);
+        listView.setAdapter(futurePaymentAdapter);
 
         customCalendarView = (CustomCalendarView) view.findViewById(R.id.calendar);
         customCalendarView.shouldScrollMonth(false);
         customCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
 
-        Event ev1 = new Event(getResources().getColor(R.color.primaryPink), 1489363200050L, "Some extra data that I want to store.");
-        customCalendarView.addEvent(ev1);
-
-        Event ev2= new Event(R.color.primaryPink, 1490040000000L, "Some extra data that I want to store.");
-        customCalendarView.addEvent(ev2);
-
-        Event ev3= new Event(R.color.primaryPink, 1490035000000L, "Some extra data that I want to store.");
-        customCalendarView.addEvent(ev3);
-
-        Event ev4= new Event(R.color.primaryPink, 1490034000000L, "Some extra data that I want to store.");
-        customCalendarView.addEvent(ev4);
-
-        Event ev5 = new Event(R.color.primaryPink, 1490033000000L, "Some extra data that I want to store.");
-        customCalendarView.addEvent(ev5);
-
-        List<Event> events = customCalendarView.getEvents(1489363200000L);
-        Log.d(TAG, "Events: " + events);
+//        Event ev1 = new Event(getResources().getColor(R.color.primaryPink), 1489363200050L, "Some extra data that I want to store.");
+//        customCalendarView.addEvent(ev1);
+//
+//        Event ev2= new Event(R.color.primaryPink, 1490040000000L, "Some extra data that I want to store.");
+//        customCalendarView.addEvent(ev2);
+//
+//        Event ev3= new Event(R.color.primaryPink, 1490035000000L, "Some extra data that I want to store.");
+//        customCalendarView.addEvent(ev3);
+//
+//        Event ev4= new Event(R.color.primaryPink, 1490034000000L, "Some extra data that I want to store.");
+//        customCalendarView.addEvent(ev4);
+//
+//        Event ev5 = new Event(R.color.primaryPink, 1490033000000L, "Some extra data that I want to store.");
+//        customCalendarView.addEvent(ev5);
+//
+//        List<Event> events = customCalendarView.getEvents(1489363200000L);
+//        Log.d(TAG, "Events: " + events);
 
         final TextView monthTitle = (TextView) view.findViewById(month);
 
@@ -104,11 +101,16 @@ public class FuturePaymentsFragment extends Fragment {
         Date date = customCalendarView.getFirstDayOfCurrentMonth();
         monthTitle.setText(dateFormat.format(date));
 
+        Calendar calendar = Calendar.getInstance(Locale.US);
+        currentDate = calendar.getTime();
+
         customCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
 
                 List<Event> events = customCalendarView.getEvents(dateClicked);
+                PaymentManager.updateEvents(events);
+                currentDate = dateClicked;
                 Log.d(TAG, "Day was clicked: " + dateClicked + " with events " + events);
 
             }

@@ -16,14 +16,14 @@
 
         <LinearLayout
             android:id="@+id/month_layout"
+            style="@style/light_calendar"
             android:layout_width="fill_parent"
             android:layout_height="50sp"
             android:layout_centerHorizontal="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:elevation="2dp"
-            style="@style/light_calendar">
+            android:elevation="2dp">
 
             <Button
                 android:id="@+id/prev_month"
@@ -58,16 +58,16 @@
 
         <edu.ucsb.cs.cs185.nivek325.showmethemoney.CustomCalendarView
             android:id="@+id/calendar"
+            style="@style/light_calendar"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_below="@id/month_layout"
             android:layout_centerVertical="true"
             android:layout_marginBottom="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:elevation="2dp"
-            style="@style/light_calendar"
-        />
+            />
 
     </RelativeLayout>
 
@@ -80,8 +80,8 @@
             android:id="@+id/future_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:paddingBottom="8dp"/>
 
     </FrameLayout>

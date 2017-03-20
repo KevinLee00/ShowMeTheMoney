@@ -1,6 +1,5 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -14,6 +13,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -29,12 +29,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import static android.content.Context.ALARM_SERVICE;
-
-/**
- * Created by Wesley on 3/18/2017.
- */
 
 public class NewPaymentScheduleDialog extends DialogFragment {
     private String selectedTitle;
@@ -104,28 +98,39 @@ public class NewPaymentScheduleDialog extends DialogFragment {
                 }
 
                 if (wantToClose) {
-                    TransactionManager.Transaction newTransaction = new TransactionManager
-                            .Transaction(selectedTitle, selectedAmount, selectedCategory,
-                            selectedDate);
-                    TransactionManager.addTransaction(newTransaction);
-                    MainActivity.progressBarFragment.updateFragment();
+                    PaymentManager.Payment payment = new PaymentManager.Payment(selectedTitle,
+                            selectedAmount, selectedCategory, selectedDate);
 
-                    long ldate = selectedDate.getTime();
-                    Event event = new Event(getResources().getColor(R.color.primaryPink), ldate);
+                    int color;
+
+                    if (payment.getColor() == 0)
+                        color = ContextCompat.getColor(getActivity(), R.color.primaryOrange);
+                    else if (payment.getColor() == 1)
+                        color = ContextCompat.getColor(getActivity(), R.color.primaryPink);
+                    else if (payment.getColor() == 2)
+                        color = ContextCompat.getColor(getActivity(), R.color.material_light_blue);
+                    else
+                        color = ContextCompat.getColor(getActivity(), R.color.primaryPurple);
+
+                    PaymentManager.addPayment(payment);
+                    Event event = new Event(color, selectedDate.getTime(), payment);
                     FuturePaymentsFragment.addCalendarEvent(event);
+                    PaymentManager.addEvent(event, selectedDate);
 
-                    MediaPlayer chaching = MediaPlayer.create(getContext(), R.raw.chaching);
+                    MediaPlayer chaching = MediaPlayer.create(getActivity(), R.raw.chaching);
                     chaching.start();
 
-                    NotificationCompat.Builder notif = new NotificationCompat.Builder(view.getContext()).setSmallIcon(R.drawable.ic_money).setContentTitle("SHOW ME");
-                    Intent res = new Intent(view.getContext(),Notifier.class);
+                    NotificationCompat.Builder notif = new NotificationCompat.Builder(view
+                            .getContext()).setSmallIcon(R.drawable.ic_money).setContentTitle("SHOW ME");
+                    Intent res = new Intent(view.getContext(), Notifier.class);
                     TaskStackBuilder builder = TaskStackBuilder.create(view.getContext());
                     builder.addParentStack(MainActivity.class);
                     builder.addNextIntent(res);
-                    PendingIntent resPen = builder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+                    PendingIntent resPen = builder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
                     notif.setContentIntent(resPen);
-                    NotificationManager manageNotif = (NotificationManager) view.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-                    manageNotif.notify(0,notif.build());
+                    NotificationManager manageNotif = (NotificationManager) view.getContext()
+                            .getSystemService(Context.NOTIFICATION_SERVICE);
+                    manageNotif.notify(0, notif.build());
                     dialog.dismiss();
 
                 }

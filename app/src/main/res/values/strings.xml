@@ -14,4 +14,5 @@
     <string name="entertainment_budget">Entertainment Budget</string>
     <string name="living_budget">Living Cost Budget</string>
     <string name="other_budget">Other Expenses Budget</string>
+    <string name="enter_amount">Enter Amount</string>
 </resources>
