@@ -62,20 +62,37 @@ public class TransactionAdapter extends BaseAdapter {
 
         date.setText(dateFormat.format(transaction.getDate()));
 
-        ImageView icon = (ImageView) v.findViewById(R.id.circle);
-        if (transaction.getColor() == 0)
-            icon.setColorFilter(ContextCompat.getColor(context, R.color.primaryOrange));
-        else if (transaction.getColor() == 1)
-            icon.setColorFilter(ContextCompat.getColor(context, R.color.primaryPink));
-        else if (transaction.getColor() == 2)
-            icon.setColorFilter(ContextCompat.getColor(context, R.color.material_light_blue));
-        else
-            icon.setColorFilter(ContextCompat.getColor(context, R.color.primaryPurple));
+        ImageView iconFrame = (ImageView) v.findViewById(R.id.circle);
+        ImageView icon = (ImageView) v.findViewById(R.id.icon);
+        if (transaction.getColor() == 0) {
+            iconFrame.setColorFilter(ContextCompat.getColor(context, R.color.primaryOrange));
+            icon.setImageDrawable(context.getResources().getDrawable(R.drawable.food_icon));
+        }
+        else if (transaction.getColor() == 1) {
+            iconFrame.setColorFilter(ContextCompat.getColor(context, R.color.primaryPink));
+            icon.setImageDrawable(context.getResources().getDrawable(R.drawable.entertainment_icon));
+
+        }
+        else if (transaction.getColor() == 2) {
+            iconFrame.setColorFilter(ContextCompat.getColor(context, R.color.material_light_blue));
+            icon.setImageDrawable(context.getResources().getDrawable(R.drawable.house_icon));
+
+        }
+        else {
+            iconFrame.setColorFilter(ContextCompat.getColor(context, R.color.primaryPurple));
+            icon.setImageDrawable(context.getResources().getDrawable(R.drawable.other_icon));
+
+        }
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) icon
                 .getLayoutParams();
         layoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
         icon.setLayoutParams(layoutParams);
+
+        layoutParams = (RelativeLayout.LayoutParams) iconFrame
+                .getLayoutParams();
+        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
+        iconFrame.setLayoutParams(layoutParams);
 
         return v;
     }

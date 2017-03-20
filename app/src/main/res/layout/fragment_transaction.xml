@@ -13,6 +13,14 @@
         android:layout_marginStart="16dp"
         android:src="@drawable/circle_drawable"/>
 
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/food_icon"/>
+
     <TextView
         android:id="@+id/amount"
         android:layout_width="wrap_content"
