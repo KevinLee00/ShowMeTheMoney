@@ -76,14 +76,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fab_colorNormal="@color/primaryGreen"
-                fab:fab_title="Schedule Payment"/>
+                fab:fab_title="Schedule Payment"
+                app:fab_icon="@drawable/ic_alarm_white_48dp"/>
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/add_transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fab_colorNormal="@color/white"
-                fab:fab_title="Add Transaction"/>
+                fab:fab_title="Add Transaction"
+                app:fab_icon="@drawable/ic_add_black_48dp"/>
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

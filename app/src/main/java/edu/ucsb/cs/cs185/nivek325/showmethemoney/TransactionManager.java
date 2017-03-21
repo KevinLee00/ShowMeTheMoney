@@ -38,16 +38,14 @@ public class TransactionManager {
                     ITEMS.add(new Transaction("Dinner Party", 59.00f , "Other Cost", new Date(1489722963000L)));
                     break;
                 case 3:
-                    ITEMS.add(new Transaction("Movies", 11, "Entertainment", new Date
-                            (1489636563000L)));
-
+                    ITEMS.add(new Transaction("Movies", 11, "Entertainment", new Date(1489636563000L)));
+                    break;
                 case 4:
-                    ITEMS.add(new Transaction("Groceries", 75.20f, "Food", new Date
-                            (1489636563000L)));
+                    ITEMS.add(new Transaction("Groceries", 75.20f, "Food", new Date(1489636563000L)));
                     break;
                 default:
-                    ITEMS.add(new Transaction("Rent", 300 * i, "Living Expenses", new
-                            Date(1489377363000L)));
+                    ITEMS.add(new Transaction("Rent", 800.0f, "Living Expenses", new Date(1489377363000L)));
+                    break;
             }
         }
         categories.add("Food");
