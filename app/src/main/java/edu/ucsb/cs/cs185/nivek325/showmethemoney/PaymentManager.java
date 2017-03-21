@@ -58,8 +58,12 @@ public class PaymentManager {
         private final String category;
         private final int color;
         private final Date date;
+        private static int count = 0;
+        private final int id;
 
         public Payment(String title, float amount, String category, Date date) {
+            count = count +1;
+            this.id=count;
             this.title = title;
             this.amount = amount;
             this.category = category;
@@ -73,6 +77,7 @@ public class PaymentManager {
                 this.color = 3;
             this.date = date;
         }
+        public static int getId(Payment p){return p.id;}
 
         public String getTitle() {
             return title;

@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 
