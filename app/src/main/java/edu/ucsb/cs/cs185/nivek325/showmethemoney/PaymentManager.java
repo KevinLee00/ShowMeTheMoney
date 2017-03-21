@@ -41,6 +41,7 @@ public class PaymentManager {
     public static void clear(){
         while(payments.size()>0)payments.remove(0);
         listener.onAddPayment();
+        MainActivity.progressBarFragment.updateFragment();
     }
 
     public static void updateEvents(List<Event> events) {
