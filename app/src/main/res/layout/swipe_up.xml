@@ -44,7 +44,7 @@
                     android:id="@+id/amtSpent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:paddingLeft="8dp"
                     android:textSize="16sp" />
 
@@ -60,7 +60,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="120dp"
             android:layout_marginTop="8dp"
             sothree:cardCornerRadius="1dp"
             sothree:cardElevation="1dp"
@@ -104,6 +104,7 @@
                         android:textAlignment="viewEnd"
                         android:id="@+id/maxBudgetText"
                         android:textColor="@color/primaryGreen"
+                        android:layout_marginEnd="8dp"
                         />
 
                 </LinearLayout>
@@ -124,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            sothree:cardCornerRadius="1dp"
+            sothree:cardCornerRadius="0dp"
             sothree:cardElevation="1dp"
             >
 
@@ -145,16 +146,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:textSize="16sp"
-                    android:text="$800 on Friday, Jan. 1 for Rent" />
+                    android:text="$1 for Hollerer Bribe, March 21"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:textSize="16sp"
-                    android:text="$1,300 on Sunday, Mar. 6 for Alaska Trip"/>
+                    android:text="$1,800 for Alaska Trip, March 24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="16sp"
+                    android:text="$800 for Rent, April 1" />
 
             </LinearLayout>
 
@@ -185,7 +194,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal">
@@ -254,7 +263,7 @@
                 sothree:cardCornerRadius="1dp"
                 sothree:cardElevation="1dp"
                 android:padding="16dp"
-                android:layout_marginTop="12dp">
+                android:layout_marginTop="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -306,7 +315,7 @@
                     <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                         android:id="@+id/progress_detail_2"
                         android:layout_height="@dimen/progress_bar_height"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
                         app:rcBackgroundPadding="5dp"
                         app:rcProgress="70.0"
@@ -353,7 +362,7 @@
                     <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                         android:id="@+id/progress_detail_3"
                         android:layout_height="@dimen/progress_bar_height"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
                         app:rcBackgroundPadding="5dp"
                         app:rcProgress="70.0"
@@ -398,7 +407,7 @@
                     <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                         android:id="@+id/progress_detail_4"
                         android:layout_height="@dimen/progress_bar_height"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
                         app:rcBackgroundPadding="5dp"
                         app:rcProgress="70.0"
@@ -428,7 +437,6 @@
                             android:layout_marginTop="10dp"
                             android:textAlignment="center"
                             android:layout_alignParentRight="true"
-                            android:text=" / $75"
                             android:textStyle="bold"
                             android:id="@+id/category_total_4"/>
 
@@ -446,7 +454,7 @@
                     <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                         android:id="@+id/progress_detail_5"
                         android:layout_height="@dimen/progress_bar_height"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
                         app:rcBackgroundPadding="5dp"
                         app:rcProgress="70.0"
