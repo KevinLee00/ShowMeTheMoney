@@ -62,7 +62,7 @@ public class MainProgressBarFragment extends Fragment {
     private String HTMLOpenRedTag = "<b><font color='#d50000'>";
     private String HTMLEndTag = "</font></b>";
 
-    private String name;
+    private String name="";
 
     public MainProgressBarFragment() { }
 
@@ -105,13 +105,13 @@ public class MainProgressBarFragment extends Fragment {
         });
 
         TextView summary = (TextView) view.findViewById(R.id.summaryLabel);
-        if (name.equals("")) {
+        if(name!=null) {
+            if (!name.equals("")) {
+                summary.setText(name + "'s Summary");
+            }
+        }
+        else
             summary.setText("Summary");
-        }
-        else {
-            summary.setText(name + "'s Summary");
-
-        }
         totalAllotted = allottedForFood + allottedForEntertainment + allottedForLivingExpenses + allottedForOtherCosts;
         updateAmountSpent();
 

@@ -75,7 +75,10 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header);
         TextView header_text = (TextView) headerLayout.findViewById(R.id.headerText);
-        header_text.setText(name + "'s Categories");
+        if(name!="" && name!=null) {
+            header_text.setText(name + "'s Categories");
+        }
+        else header_text.setText("Categories");
 
 
 
