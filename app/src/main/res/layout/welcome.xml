@@ -13,49 +13,32 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginEnd="56dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:gravity="center"
         android:hint="@string/enter_name"
-        android:layout_marginTop="30dp"
-        app:met_textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:maxLines="1"
-        android:inputType="text"
         android:imeOptions="actionDone"
-        />
+        android:inputType="text"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        app:met_textColorHint="@color/white"/>
 
     <LinearLayout
         android:id="@+id/welcome_text_view_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/name_edit_text"
-        android:orientation="vertical"
         android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/welcome_to_text_view"
+            android:id="@+id/welcome_text_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="90dp"
-            android:gravity="center"
-            android:text="@string/welcome_to"
-            android:textColor="@color/white"
-            android:textSize="35sp"/>
-
-
-        <TextView
-            android:id="@+id/show_me_the_money_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:gravity="center"
-            android:text="@string/title"
+            android:text="@string/welcome"
             android:textColor="@color/white"
-            android:textSize="35sp"/>
+            android:textSize="40sp"/>
 
     </LinearLayout>
 
@@ -69,7 +52,6 @@
         android:layout_marginTop="24dp"
         android:background="@color/white"
         android:text="@string/enter"
-        android:textColor="@color/primaryGreen"
-        />
+        android:textColor="@color/primaryGreen"/>
 
 </RelativeLayout>
