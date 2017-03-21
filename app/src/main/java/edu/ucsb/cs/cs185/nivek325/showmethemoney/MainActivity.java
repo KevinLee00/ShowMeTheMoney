@@ -1,13 +1,19 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DrawableUtils;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -41,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
     private ViewPager mViewPager;
     public static FloatingActionsMenu fabMenu;
     private String name;
+    private DrawerLayout mDrawer;
+    private NavigationView nvDrawer;
+    private ActionBarDrawerToggle drawerToggle;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +63,34 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
 
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nvView);
+        navigationView.getMenu().findItem(R.id.nav_first_fragment).getIcon().setColorFilter(getResources().getColor(R.color.primaryPink), PorterDuff.Mode.SRC_IN);
+        navigationView.getMenu().findItem(R.id.nav_second_fragment).getIcon().setColorFilter(getResources().getColor(R.color.primaryOrange), PorterDuff.Mode.SRC_IN);
+        navigationView.getMenu().findItem(R.id.nav_third_fragment).getIcon().setColorFilter(getResources().getColor(R.color.material_light_blue), PorterDuff.Mode.SRC_IN);
+        navigationView.getMenu().findItem(R.id.nav_fourth_fragment).getIcon().setColorFilter(getResources().getColor(R.color.primaryPurple), PorterDuff.Mode.SRC_IN);
+
+
+
+        View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header);
+        TextView header_text = (TextView) headerLayout.findViewById(R.id.headerText);
+        header_text.setText(name + "'s Categories");
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        final ActionBar actionBar = getSupportActionBar();
+
+        if(actionBar!=null)
+        {
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -139,6 +178,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
         });
     }
 
+
+
     @Override
     public void onFragmentInteraction(Uri uri) {
 
@@ -153,10 +194,15 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
+
+
+        if (id == android.R.id.home)
+        {
+            mDrawer.openDrawer(GravityCompat.START);
+            return true;
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {

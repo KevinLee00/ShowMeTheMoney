@@ -63,9 +63,7 @@ public class FuturePaymentsFragment extends Fragment {
         }
     }
 
-    public static void addCalendarEvent(Event e) {
-        customCalendarView.addEvent(e, true);
-    }
+    public static void addCalendarEvent(Event e) { customCalendarView.addEvent(e, true); }
 
 
     @Override

@@ -44,8 +44,8 @@
 
     <style name="dark_calendar">
         <item name="compactCalendarBackgroundColor">@color/dark_calendar_background</item>
-        <item name="compactCalendarCurrentDayBackgroundColor">#B71C1C</item>
-        <item name="compactCalendarCurrentSelectedDayBackgroundColor">#E57373</item>
+        <item name="compactCalendarCurrentDayBackgroundColor">@color/calendarToday</item>
+        <item name="compactCalendarCurrentSelectedDayBackgroundColor">@color/calendarSelected</item>
         <item name="compactCalendarTextSize">14sp</item>
         <item name="compactCalendarTextColor">@color/white</item>
         <item name="android:background">@color/dark_calendar_background</item>
@@ -54,8 +54,8 @@
 
     <style name="light_calendar">
         <item name="compactCalendarBackgroundColor">@color/light_calendar_background</item>
-        <item name="compactCalendarCurrentDayBackgroundColor">#B71C1C</item>
-        <item name="compactCalendarCurrentSelectedDayBackgroundColor">#E57373</item>
+        <item name="compactCalendarCurrentDayBackgroundColor">@color/calendarToday</item>
+        <item name="compactCalendarCurrentSelectedDayBackgroundColor">@color/calendarSelected</item>
         <item name="compactCalendarTextSize">14sp</item>
         <item name="compactCalendarTextColor">@color/black_text</item>
         <item name="compactCalendarMultiEventIndicatorColor">@color/primaryBlue</item>
@@ -78,9 +78,9 @@
         <item name="rcRadius">10dp</item>
         <item name="rcBackgroundPadding">3dp</item>
         <item name="rcBackgroundColor">@color/progress_background</item>
-        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginTop">30dp</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">400dp</item>
     </style>
 
     <style name="sans_serif" parent="TextAppearance.Design.Tab">
