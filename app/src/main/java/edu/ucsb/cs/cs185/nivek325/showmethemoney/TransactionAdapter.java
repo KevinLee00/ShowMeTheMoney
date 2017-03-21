@@ -71,17 +71,14 @@ public class TransactionAdapter extends BaseAdapter {
         else if (transaction.getColor() == 1) {
             iconFrame.setColorFilter(ContextCompat.getColor(context, R.color.primaryPink));
             icon.setImageDrawable(context.getResources().getDrawable(R.drawable.entertainment_icon));
-
         }
         else if (transaction.getColor() == 2) {
             iconFrame.setColorFilter(ContextCompat.getColor(context, R.color.material_light_blue));
             icon.setImageDrawable(context.getResources().getDrawable(R.drawable.house_icon));
-
         }
         else {
             iconFrame.setColorFilter(ContextCompat.getColor(context, R.color.primaryPurple));
             icon.setImageDrawable(context.getResources().getDrawable(R.drawable.other_icon));
-
         }
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) icon

@@ -15,4 +15,7 @@
     <string name="living_budget">Living Cost Budget</string>
     <string name="other_budget">Other Expenses Budget</string>
     <string name="enter_amount">Enter Amount</string>
+    <string name="enter">Enter</string>
+    <string name="enter_name">Enter your name</string>
+    <string name="welcome">Welcome to Show Me The Money</string>
 </resources>

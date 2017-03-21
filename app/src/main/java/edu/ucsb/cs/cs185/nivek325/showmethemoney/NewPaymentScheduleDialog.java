@@ -10,7 +10,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.RemoteInput;
@@ -126,31 +125,35 @@ public class NewPaymentScheduleDialog extends DialogFragment {
                     chaching.start();
 
                     //add notification if is in future
-                    if(ldate>=curdate) {
+                    if (ldate >= curdate) {
                         Intent res = new Intent(view.getContext(), MainActivity.class);
                         TaskStackBuilder builder = TaskStackBuilder.create(view.getContext());
                         builder.addParentStack(MainActivity.class);
                         builder.addNextIntent(res);
                         PendingIntent resPen = PendingIntent.getActivity(view.getContext(), 0, res, PendingIntent.FLAG_UPDATE_CURRENT);
                         RemoteInput ri = new RemoteInput.Builder("Return").setLabel("Label").build();
-                        NotificationCompat.Action act = new NotificationCompat.Action.Builder(R.drawable.ic_money,"VIEW PAYMENTS",resPen)
+                        NotificationCompat.Action act = new NotificationCompat.Action.Builder(R.drawable.ic_money, "VIEW PAYMENTS", resPen)
                                 .addRemoteInput(ri).build();
                         NotificationCompat.Builder notif = new NotificationCompat.Builder(view.getContext())
                                 .setContentTitle(selectedTitle)
                                 .setContentInfo(selectedCategory)
                                 .addAction(act);
-                        if(selectedCategory.compareTo("Food")==0)notif.setSmallIcon(R.drawable.food_icon);
-                        else if(selectedCategory.compareTo("Entertainment")==0)notif.setSmallIcon(R.drawable.entertainment_icon);
-                        else if(selectedCategory.compareTo("Living Expenses")==0)notif.setSmallIcon(R.drawable.house_icon);
+                        if (selectedCategory.compareTo("Food") == 0)
+                            notif.setSmallIcon(R.drawable.food_icon);
+                        else if (selectedCategory.compareTo("Entertainment") == 0)
+                            notif.setSmallIcon(R.drawable.entertainment_icon);
+                        else if (selectedCategory.compareTo("Living Expenses") == 0)
+                            notif.setSmallIcon(R.drawable.house_icon);
                         else notif.setSmallIcon(R.drawable.other_icon);
 
                         notif.setAutoCancel(true);
 
                         notif.setContentIntent(resPen);
-                        NotificationManager manageNotif = (NotificationManager) view.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                        NotificationManager manageNotif = (NotificationManager) view.getContext()
+                                .getSystemService(Context.NOTIFICATION_SERVICE);
                         manageNotif.notify(PaymentManager.Payment.getId(payment), notif.build());
-                        dialog.dismiss();
                     }
+                    dialog.dismiss();
                 }
             }
         });
