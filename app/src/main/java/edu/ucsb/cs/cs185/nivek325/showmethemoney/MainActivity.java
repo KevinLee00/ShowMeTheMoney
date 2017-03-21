@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs185.nivek325.showmethemoney;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -39,11 +40,15 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     public static FloatingActionsMenu fabMenu;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -184,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
                 return transactionHistoryFragment;
             } else if (position == 1) {
                 progressBarFragment = new MainProgressBarFragment();
+                progressBarFragment.setName(name);
                 return progressBarFragment;
             } else {
                 return future;
