@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +63,9 @@ public class FuturePaymentsFragment extends Fragment {
         }
     }
 
-    public static void addCalendarEvent(Event e) { customCalendarView.addEvent(e, true); }
+    public static void addCalendarEvent(Event e) {
+        customCalendarView.addEvent(e, true);
+    }
 
 
     @Override
@@ -77,23 +80,23 @@ public class FuturePaymentsFragment extends Fragment {
         customCalendarView.shouldScrollMonth(false);
         customCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
 
-//        Event ev1 = new Event(getResources().getColor(R.color.primaryPink), 1489363200050L, "Some extra data that I want to store.");
-//        customCalendarView.addEvent(ev1);
-//
-//        Event ev2= new Event(R.color.primaryPink, 1490040000000L, "Some extra data that I want to store.");
-//        customCalendarView.addEvent(ev2);
-//
-//        Event ev3= new Event(R.color.primaryPink, 1490035000000L, "Some extra data that I want to store.");
-//        customCalendarView.addEvent(ev3);
-//
-//        Event ev4= new Event(R.color.primaryPink, 1490034000000L, "Some extra data that I want to store.");
-//        customCalendarView.addEvent(ev4);
-//
-//        Event ev5 = new Event(R.color.primaryPink, 1490033000000L, "Some extra data that I want to store.");
-//        customCalendarView.addEvent(ev5);
-//
-//        List<Event> events = customCalendarView.getEvents(1489363200000L);
-//        Log.d(TAG, "Events: " + events);
+        PaymentManager.Payment rentPayment = new PaymentManager.Payment("Rent", 800, "Living " +
+                "Expenses", new Date(1491030000000L));
+        PaymentManager.Payment bribePayment = new PaymentManager.Payment("Hollerer Bribe", 1,
+                "Other Costs", new Date(1490079600000L));
+        PaymentManager.Payment alaskaPayment = new PaymentManager.Payment("Alaska Trip", 1800,
+                "Entertainment", new Date(1490425200000L));
+
+        Event rent = new Event(ContextCompat.getColor(getActivity(), R.color.material_light_blue)
+                , 1491030000000L, rentPayment);
+        Event bribe = new Event(ContextCompat.getColor(getActivity(), R.color.primaryPurple),
+                1490079600000L, bribePayment);
+        Event alaska = new Event(ContextCompat.getColor(getActivity(), R.color.primaryPink),
+                1490425200000L, alaskaPayment);
+
+        customCalendarView.addEvent(rent, false);
+        customCalendarView.addEvent(bribe, false);
+        customCalendarView.addEvent(alaska, true);
 
         final TextView monthTitle = (TextView) view.findViewById(month);
 
