@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
                 case 1:
                     return "Summary";
                 case 2:
-                    return "Schedule Transactions";
+                    return "Scheduled Transactions";
             }
             return null;
         }
