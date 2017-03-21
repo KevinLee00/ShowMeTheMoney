@@ -113,6 +113,7 @@
                     android:layout_gravity="center_horizontal"
                     app:rcProgress="70.0"
                     app:rcProgressColor="@color/primaryGreen"
+                    app:rcBackgroundPadding="3dp"
                     style="@style/default_progress"
                     />
 
@@ -238,7 +239,7 @@
                     <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                         android:id="@+id/progress_detail_1"
                         android:layout_gravity="center_horizontal"
-                        app:rcBackgroundPadding="5dp"
+                        app:rcBackgroundPadding="3dp"
                         app:rcProgress="70.0"
                         app:rcProgressColor="@color/primaryGreen"
                         style="@style/default_progress"
@@ -309,7 +310,7 @@
                         android:layout_height="@dimen/progress_bar_height"
                         android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
-                        app:rcBackgroundPadding="5dp"
+                        app:rcBackgroundPadding="3dp"
                         app:rcProgress="70.0"
                         app:rcRadius="25dp"
                         app:rcProgressColor="@color/material_pink"
@@ -356,7 +357,7 @@
                         android:layout_height="@dimen/progress_bar_height"
                         android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
-                        app:rcBackgroundPadding="5dp"
+                        app:rcBackgroundPadding="3dp"
                         app:rcProgress="70.0"
                         app:rcRadius="25dp"
                         app:rcProgressColor="@color/material_orange" />
@@ -401,7 +402,7 @@
                         android:layout_height="@dimen/progress_bar_height"
                         android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
-                        app:rcBackgroundPadding="5dp"
+                        app:rcBackgroundPadding="3dp"
                         app:rcProgress="70.0"
                         app:rcRadius="25dp"
                         app:rcProgressColor="@color/material_light_blue"
@@ -449,7 +450,7 @@
                         android:layout_height="@dimen/progress_bar_height"
                         android:layout_width="match_parent"
                         android:layout_gravity="center_horizontal"
-                        app:rcBackgroundPadding="5dp"
+                        app:rcBackgroundPadding="3dp"
                         app:rcProgress="70.0"
                         app:rcRadius="25dp"
                         app:rcProgressColor="@color/material_purple"

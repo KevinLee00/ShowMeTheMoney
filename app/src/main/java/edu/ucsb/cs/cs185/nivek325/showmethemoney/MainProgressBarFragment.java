@@ -301,7 +301,7 @@ public class MainProgressBarFragment extends Fragment {
         foodBar.setMax(allottedForFood);
         foodBar.setProgress(spentOnFood);
         if (spentOnFood > allottedForFood) {
-            foodBar.setProgressColor(Color.parseColor("#d50000"));
+            foodBar.setProgressColor(getResources().getColor(R.color.material_red));
             allottedFood.setTextColor(getResources().getColor(R.color.material_red));
         } else {
             foodBar.setProgressColor(getResources().getColor(R.color.primaryOrange));
@@ -314,7 +314,7 @@ public class MainProgressBarFragment extends Fragment {
         entertainmentBar.setMax(allottedForEntertainment);
         entertainmentBar.setProgress(spentOnEntertainment);
         if (spentOnEntertainment > allottedForEntertainment) {
-            entertainmentBar.setProgressColor(Color.parseColor("#d50000"));
+            entertainmentBar.setProgressColor(getResources().getColor(R.color.material_red));
             allottedEntertainment.setTextColor(getResources().getColor(R.color.material_red));
 
         } else {
@@ -328,7 +328,7 @@ public class MainProgressBarFragment extends Fragment {
         livingBar.setMax(allottedForLivingExpenses);
         livingBar.setProgress(spentOnLivingExpenses);
         if (spentOnLivingExpenses > allottedForLivingExpenses) {
-            livingBar.setProgressColor(Color.parseColor("#d50000"));
+            livingBar.setProgressColor(getResources().getColor(R.color.material_red));
             allottedLiving.setTextColor(getResources().getColor(R.color.material_red));
         } else {
             livingBar.setProgressColor(getResources().getColor(R.color.material_light_blue));
@@ -342,7 +342,7 @@ public class MainProgressBarFragment extends Fragment {
         otherBar.setMax(allottedForOtherCosts);
         otherBar.setProgress(spentOnOtherCosts);
         if (spentOnOtherCosts > allottedForOtherCosts) {
-            otherBar.setProgressColor(Color.parseColor("#d50000"));
+            otherBar.setProgressColor(getResources().getColor(R.color.material_red));;
             allottedOther.setTextColor(getResources().getColor(R.color.material_red));
         } else {
             otherBar.setProgressColor(getResources().getColor(R.color.primaryPurple));
