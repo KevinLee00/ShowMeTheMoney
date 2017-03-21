@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DrawableUtils;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -154,7 +155,8 @@ public class MainActivity extends AppCompatActivity implements TransactionHistor
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
+            TransactionManager.clear();
+            PaymentManager.clear();
             return true;
         }
 

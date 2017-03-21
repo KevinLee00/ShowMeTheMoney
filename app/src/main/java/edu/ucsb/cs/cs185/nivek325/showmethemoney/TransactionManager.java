@@ -24,6 +24,10 @@ public class TransactionManager {
         listener.onAddTransaction();
     }
 
+    public static void clear(){
+        while(ITEMS.size()>0)ITEMS.remove(0);
+    }
+
     public static void setOnAddTransactionListener(OnAddTransactionListener listener) {
         TransactionManager.listener = listener;
     }

@@ -38,6 +38,10 @@ public class PaymentManager {
         }
     }
 
+    public static void clear(){
+        while(payments.size()>0)payments.remove(0);
+    }
+
     public static void updateEvents(List<Event> events) {
         PaymentManager.events.clear();
         PaymentManager.events.addAll(events);

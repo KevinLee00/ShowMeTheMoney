@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ShowMeTheMoney</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Clear History</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="app_name_spaces">Show Me The Money</string>
     <string name="transaction_title">Title</string>
